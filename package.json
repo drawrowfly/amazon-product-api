@@ -1,7 +1,7 @@
 {
   "name": "amazon-buddy",
   "version": "1.2.0",
-  "description": "Amazon Scraper. Scrape products",
+  "description": "Amazon Scraper. Scrape useful product information from the amazon search results",
   "main": "index.js",
   "bin": {
     "amazon-buddy": "bin/cli.js"

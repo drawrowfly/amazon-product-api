@@ -53,12 +53,6 @@ require("yargs")
             type: 'boolean',
             describe: 'Save to a CSV file?'
         },
-        'sponsored': {
-            alias: 's',
-            default: true,
-            type: 'boolean',
-            describe: 'Scrape sponsored products'
-        },
     })
     .demandCommand()
     .demandOption(['keyword'])

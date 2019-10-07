@@ -21,7 +21,7 @@ const startScraper = async (argv) => {
 
 require("yargs")
     .usage('Usage: $0 <command> [options]')
-    .example(`$0 product -k 'Xbox one'`)
+    .example(`$0 search -k 'Xbox one'`)
     .command(
         "search", 
         "scrape for a products from the provided key word", 

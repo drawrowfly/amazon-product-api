@@ -1,6 +1,6 @@
 
 # Amazon Product Scraper
- 
+ ![NPM](https://img.shields.io/npm/l/amazon-buddy.svg?style=for-the-badge) ![npm](https://img.shields.io/npm/v/amazon-buddy.svg?style=for-the-badge)
 
 Useful tool to scrape product information from amazon
 
@@ -46,19 +46,19 @@ Options:
   --version        Show version number                                 [boolean]
   --keyword, -k    Amazon search keyword ex. 'Xbox one'
                                                [string] [required] [default: ""]
-  --number, -n   Number of products to scrape. Maximum 100       [default: 20]
+  --products, -p   Number of products to scrape. Maximum 100       [default: 20]
   --save, -s       Save to a CSV file?                [boolean] [default: false]
+  --sponsored, -s  Scrape sponsored products          [boolean] [default: false]
 
 Examples:
   amazon-buddy search -k 'Xbox one'
 ```
 
-**Example**
+**Example 1**
 
-Scrape 40 producs from the "vacuum cleaner" keyword and save everything to a CSV file
+Scrape 40 producs from the "vacume cleaner" keyword and save everything to a CSV file
 ```sh
-$ amazon-buddy search -k 'vacuum cleaner' -s -n 40
-
+$ amazon-buddy search -k 'vacume cleaner' -s -p 40
 ```
 **The file will be saved in a folder from which you run the script:
 1552945544582.csv**

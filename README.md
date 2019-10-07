@@ -54,15 +54,15 @@ Examples:
   amazon-buddy search -k 'Xbox one'
 ```
 
-**Example 1**
+**Example**
 
 Scrape 40 producs from the "vacume cleaner" keyword and save everything to a CSV file
 ```sh
 $ amazon-buddy search -k 'vacume cleaner' -s -p 40
 
-Output:
-CSV file: 1552945544582.csv
 ```
+**The file will be saved in a folder from which you run the script:
+1552945544582.csv**
 
 **Module**
 ```

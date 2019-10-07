@@ -41,8 +41,8 @@ require("yargs")
             type: 'string',
             describe: "Amazon search keyword ex. 'Xbox one'"
         },
-        'products':{
-            alias: 'p',
+        'number':{
+            alias: 'n',
             default: 20,
             type: 'integer',
             describe: 'Number of products to scrape. Maximum 100'

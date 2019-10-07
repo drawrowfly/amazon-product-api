@@ -56,9 +56,9 @@ Examples:
 
 **Example**
 
-Scrape 40 producs from the "vacume cleaner" keyword and save everything to a CSV file
+Scrape 40 producs from the "vacuum cleaner" keyword and save everything to a CSV file
 ```sh
-$ amazon-buddy search -k 'vacume cleaner' -s -p 40
+$ amazon-buddy search -k 'vacuum cleaner' -s -n 40
 
 ```
 **The file will be saved in a folder from which you run the script:

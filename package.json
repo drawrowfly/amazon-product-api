@@ -4,7 +4,7 @@
   "description": "Amazon Scraper. Scrape products",
   "main": "index.js",
   "bin": {
-    "amazonscrape": "bin/cli.js"
+    "amazon-buddy": "bin/cli.js"
   },
   "directories": {
     "lib": "lib"

@@ -46,9 +46,8 @@ Options:
   --version        Show version number                                 [boolean]
   --keyword, -k    Amazon search keyword ex. 'Xbox one'
                                                [string] [required] [default: ""]
-  --products, -p   Number of products to scrape. Maximum 100       [default: 20]
+  --number, -n   Number of products to scrape. Maximum 100       [default: 20]
   --save, -s       Save to a CSV file?                [boolean] [default: false]
-  --sponsored, -s  Scrape sponsored products          [boolean] [default: false]
 
 Examples:
   amazon-buddy search -k 'Xbox one'

@@ -80,7 +80,7 @@ Scrape 100 reviews from a product by using ASIN.
 $ amazon-buddy reviews -a B01GW3H3U8 -n 100
 ```
 **The file will be saved in a folder from which you run the script:
-1552945544582_B01GW3H3U8_products.csv**
+1552945544582_B01GW3H3U8_reviews.csv**
 
 **Module**
 ```

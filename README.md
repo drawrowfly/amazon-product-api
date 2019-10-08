@@ -43,7 +43,7 @@ $ amazon-buddy --help
 Usage: amazon-buddy <command> [options]
 
 Commands:
-  amazon-buddy products  scrape for a products from the provided key word
+  amazon-buddy products  scrape products from the provided key word
   amazon-buddy reviews   scrape reviews from a product
 
 Options:

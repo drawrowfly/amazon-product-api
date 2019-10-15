@@ -73,6 +73,12 @@ require("yargs")
             type: 'boolean',
             describe: 'If searching for a products then list will be sorted by a higher score(number of reviews*rating). If searching for a reviews then they will be sorted by rating.'
         },
+        'discount':{
+            alias: 'd',
+            default: false,
+            type: 'boolean',
+            describe: 'Scrape only products with the discount'
+        },
     })
     .demandCommand()
     .argv

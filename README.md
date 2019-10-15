@@ -57,6 +57,8 @@ Options:
   --sort         If searching for a products then list will be sorted by a higher
                  score(reviews*rating). If searching for a reviews then they will
                  be sorted by rating.                 [boolean] [default: false]
+  --discount, -d Scrape only for a products with the discount
+                                                      [boolean] [default: false]
 
 Examples:
   amazon-buddy products -k 'Xbox one'
@@ -135,7 +137,10 @@ let options = {
     proxy: "",
     
     //Sorting. If searching for a products then list will be sorted by a higher score(number of reviews*rating). If searching for a reviews then they will be sorted by rating.
-    sort: true
+    sort: true,
+
+    //Scrape only for a products with the discount
+    discount: true,
 };
 ```
 

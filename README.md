@@ -11,7 +11,7 @@ Useful tool to scrape product information from amazon
 *   You can scrape up to **100 produtcs** and **300 reviews**
 
 **Product List**
-![alt text](https://i.imgur.com/FfNDX2J.png)
+![alt text](https://i.imgur.com/ES5M4Rx.png)
 **Review List**
 ![alt text](https://i.imgur.com/HuBW3rl.png)
 

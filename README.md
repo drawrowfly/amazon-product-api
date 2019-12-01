@@ -4,11 +4,13 @@
 
 Useful tool to scrape product information from amazon
 
+## If you like this tool then please Star it
+
 ## Features
 *   **Scrape products** from amazon search result: asin, rating, number of reviews, price, title, url, sponsored or not, discounted or not
 *   **Scrape reviews** from amazon search result: title, review, rating, reviewer name and date when it was posted
 *   Result can be save to a CSV file
-*   You can scrape up to **100 produtcs** and **300 reviews**
+*   You can scrape up to **500 produtcs** and **1000 reviews**
 
 **Product List**
 ![alt text](https://i.imgur.com/ES5M4Rx.png)

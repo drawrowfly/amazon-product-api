@@ -61,7 +61,7 @@ Options:
                  be sorted by rating.                 [boolean] [default: false]
   --discount, -d Scrape only for a products with the discount
                                                       [boolean] [default: false]
-  --host, -h      The custom amazon host (can be www.amazon.fr, www.amazon.de, etc.)
+  --host, -H      The custom amazon host (can be www.amazon.fr, www.amazon.de, etc.)
                                             [string] [default: "www.amazon.com"]
 
 

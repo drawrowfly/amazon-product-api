@@ -25,7 +25,7 @@ Useful tool to scrape product information from amazon
 
 ## Installation
 
-**Install from NPM** 
+**Install from NPM**
 ```sh
 $ npm i -g amazon-buddy
 ```
@@ -61,9 +61,13 @@ Options:
                  be sorted by rating.                 [boolean] [default: false]
   --discount, -d Scrape only for a products with the discount
                                                       [boolean] [default: false]
+  --host, -h      The custom amazon host (can be www.amazon.fr, www.amazon.de, etc.)
+                                            [string] [default: "www.amazon.com"]
+
 
 Examples:
   amazon-buddy products -k 'Xbox one'
+  amazon-buddy products -k 'Xbox one' -h 'www.amazon.fr'
   amazon-buddy reviews -a B01GW3H3U8
 ```
 
@@ -78,7 +82,7 @@ $ amazon-buddy products -k 'vacume cleaner' -n 40
 
 **Example 2**
 
-Scrape 100 reviews from a product by using ASIN. 
+Scrape 100 reviews from a product by using ASIN.
 ***NOTE: ASIN is a uniq amazon product ID, it can be found in product URL or if you have scraped product list with our tool you will find it in a CSV file***
 ```sh
 $ amazon-buddy reviews -a B01GW3H3U8 -n 100
@@ -101,19 +105,19 @@ const amazonScraper = require('amazon-buddy');
 ```
 **JSON/CSV output(products):**
 ```
-[{ 
+[{
     asin: 'B01N6HLV9L',
     discounted: false,  // is true if product is with the discount
     sponsored: false,  // is true if product is sponsored
     price: '$32.99',
     before_discount: '$42.99', // displayed only if price is discounted
     title:'product title',
-    url:'long amazon url' 
+    url:'long amazon url'
 }...]
 ```
 **JSON/CSV output(reviews):**
 ```
-[{ 
+[{
     id: 'R335O5YFEWQUNE',
     review_data: '6-Apr-17',
     name: 'Bob',
@@ -134,15 +138,18 @@ let options = {
 
     //Save to a CSV file
     save: true,
-    
+
     //Set proxy
     proxy: "",
-    
+
     //Sorting. If searching for a products then list will be sorted by a higher score(number of reviews*rating). If searching for a reviews then they will be sorted by rating.
     sort: true,
 
     //Scrape only for a products with the discount
     discount: true,
+
+    //Search on custom amazon host to list products in specific language
+    host: "www.amazon.de"
 };
 ```
 

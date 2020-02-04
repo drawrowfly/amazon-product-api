@@ -2,7 +2,7 @@
 "use strict";
 
 const os = require("os");
- 
+
 const AmazonScraper = require("../lib/instance");
 
 const startScraper = async (argv) => {
@@ -12,7 +12,6 @@ const startScraper = async (argv) => {
             ...argv,
             cli: true,
         };
-        
         await AmazonScraper(argv)._startScraper()
     } catch(error){
         console.log(error);
@@ -22,19 +21,20 @@ const startScraper = async (argv) => {
 require("yargs")
     .usage('Usage: $0 <command> [options]')
     .example(`$0 products -k 'Xbox one'`)
+    .example(`$0 products -k 'Xbox one' -H 'www.amazon.de'`)
     .example(`$0 reviews -a B01GW3H3U8`)
     .command(
-        "products", 
-        "scrape for a products from the provided key word", 
-        {}, 
+        "products",
+        "scrape for a products from the provided key word",
+        {},
         (argv) => {
             startScraper(argv);
         }
     )
     .command(
-        "reviews", 
-        "scrape reviews from a product, by providing ASIN", 
-        {}, 
+        "reviews",
+        "scrape reviews from a product, by providing ASIN",
+        {},
         (argv) => {
             startScraper(argv);
         }
@@ -78,6 +78,12 @@ require("yargs")
             default: false,
             type: 'boolean',
             describe: 'Scrape only products with the discount'
+        },
+        'host':{
+            alias: 'H',
+            default: 'www.amazon.com',
+            type: 'string',
+            describe: 'The custom amazon host (can be www.amazon.fr, www.amazon.de, etc.)'
         },
     })
     .demandCommand()

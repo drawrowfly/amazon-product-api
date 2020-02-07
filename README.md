@@ -9,6 +9,9 @@ Useful tool to scrape product information from amazon
 ## Features
 *   **Scrape products** from amazon search result: asin, rating, number of reviews, price, title, url, sponsored or not, discounted or not
 *   **Scrape reviews** from amazon search result: title, review, rating, reviewer name and date when it was posted
+*   Sort result by rating(stars)
+*   Sort result by sponsored products only
+*   Sorts result by discounted products only
 *   Result can be save to a CSV file
 *   You can scrape up to **500 produtcs** and **1000 reviews**
 
@@ -59,8 +62,11 @@ Options:
   --sort         If searching for a products then list will be sorted by a higher
                  score(reviews*rating). If searching for a reviews then they will
                  be sorted by rating.                 [boolean] [default: false]
-  --discount, -d Scrape only for a products with the discount
+  --discount, -d Scrape only products with the discount
                                                       [boolean] [default: false]
+  --sponsored     Scrape only sponsored products      [boolean] [default: false]
+  --min-rating    Minimum allowed rating                            [default: 1]
+  --max-rating    Maximum allowed rating                            [default: 5]
   --host, -H      The custom amazon host (can be www.amazon.fr, www.amazon.de, etc.)
                                             [string] [default: "www.amazon.com"]
 
@@ -90,21 +96,64 @@ $ amazon-buddy reviews -a B01GW3H3U8 -n 100
 **The file will be saved in a folder from which you run the script:
 1552945544582_B01GW3H3U8_reviews.csv**
 
-**Module**
+**Example 3**
+
+Scrape 300 producs from the "xbox one" keyword with rating minimum rating 3 and maximum rating 4 and save everything to a CSV file
+```sh
+$ amazon-buddy products -k 'xbox one' -n 300 --min-rating 3 --max-rating 4
 ```
+**The file will be saved in a folder from which you run the script:
+1552945544582_products.csv**
+# Module
+
+### Promise
+```javascript
 const amazonScraper = require('amazon-buddy');
 
 (async() => {
     try{
+        // Collect 50 products from a keyword 'xbox one'
         let products = await amazonScraper.products({keyword: 'Xbox One', number: 50, save: true });
+        // Collect 50 reviews from a product ID B01GW3H3U8
         let reviews = await amazonScraper.rewviews({asin: 'B01GW3H3U8', number: 50, save: true });
+        
+        // Collect 50 products from a keyword 'xbox one' with rating between 3-5 stars
+        let products_rank = await amazonScraper.products({keyword: 'Xbox One', number: 50, rating:[3,5] });
+        // Collect 50 reviews from a product ID B01GW3H3U8  with rating between 1-2 stars
+        let reviews_rank = await amazonScraper.rewviews({asin: 'B01GW3H3U8', number: 50,  rating: [1,2] });
     }catch(error){
         console.log(error);
     }
 })()
 ```
-**JSON/CSV output(products):**
+
+### Event
+* You won't be able to use promises.
+* {sort} and {save} will be ignored
+```javascript
+const amazonScraper = require('amazon-buddy');
+
+let products = amazonScraper.products({
+    keyword: 'xbox',
+    number: 50,
+    event: true,
+});
+
+products.on('error message', error => {
+    console.log(error);
+});
+
+products.on('item', item => {
+    console.log(item);
+});
+
+products.on('completed', () => {
+    console.log('completed');
+});
+products._startScraper();
 ```
+**JSON/CSV output(products):**
+```javascript
 [{
     asin: 'B01N6HLV9L',
     discounted: false,  // is true if product is with the discount
@@ -116,7 +165,7 @@ const amazonScraper = require('amazon-buddy');
 }...]
 ```
 **JSON/CSV output(reviews):**
-```
+```javascript
 [{
     id: 'R335O5YFEWQUNE',
     review_data: '6-Apr-17',
@@ -128,25 +177,35 @@ const amazonScraper = require('amazon-buddy');
 ```
 
 **Options**
-```
+```javascript
 let options = {
-    //Search keyword
-    keyword: 0,
+    //Search keyword: {string default: ""}
+    keyword: "",
 
-    //Number of products to scrape. Default 10
-    number: 20,
+    //Number of products to scrape: {int default: 10}
+    number: 10,
+    
+    // Enable/disabled EventEmitter: {boolean default: false}
+    // If enabled then you won't be able to use promises 
+    event: false,
 
-    //Save to a CSV file
-    save: true,
+    //Save to a CSV file: {boolean default: false}
+    save: false,
 
-    //Set proxy
+    //Set proxy: {string default: ""}
     proxy: "",
+    
+    //Sort by rating. [minRating, maxRating]: {array default: [1,5]}
+    rating:[1,5],
 
-    //Sorting. If searching for a products then list will be sorted by a higher score(number of reviews*rating). If searching for a reviews then they will be sorted by rating.
-    sort: true,
+    //Sorting. If searching for a products then list will be sorted by a higher score(number of reviews*rating). If searching for a reviews then they will be sorted by rating.: {boolean default: false}
+    sort: false,
 
-    //Scrape only for a products with the discount
-    discount: true,
+    //Scrape only products with the discount: {boolean default: false}
+    discount: false,
+    
+    //Scrape only sponsored products: {boolean default: false}
+    sponsored: false,
 
     //Search on custom amazon host to list products in specific language
     host: "www.amazon.de"

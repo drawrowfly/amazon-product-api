@@ -2,7 +2,7 @@
 # Amazon Product Scraper
  ![NPM](https://img.shields.io/npm/l/amazon-buddy.svg?style=for-the-badge) ![npm](https://img.shields.io/npm/v/amazon-buddy.svg?style=for-the-badge)
 
-Useful tool to scrape product information from amazon
+Useful tool to scrape product information from the amazon
 
 ## If you like this tool then please Star it
 
@@ -73,6 +73,10 @@ Options:
   --max-rating    Maximum allowed rating                            [default: 5]
   --host, -H      The custom amazon host (can be www.amazon.fr, www.amazon.de, etc.)
                                             [string] [default: "www.amazon.com"]
+  --random-ua     Randomize user agent version. This helps to prevent request
+                  blocking from the amazon side       [boolean] [default: false]
+  --timeout, -t   Timeout between requests. Timeout is set in mls: 1000 mls = 1
+                  second                                   [number] [default: 0]
 
 
 Examples:
@@ -162,6 +166,7 @@ products._startScraper();
     asin: 'B01N6HLV9L',
     discounted: false,  // is true if product is with the discount
     sponsored: false,  // is true if product is sponsored
+    amazonChoice: true,// if amazon choice badge is present 
     price: '$32.99',
     before_discount: '$42.99', // displayed only if price is discounted
     title:'product title',
@@ -212,7 +217,13 @@ let options = {
     sponsored: false,
 
     //Search on custom amazon host to list products in specific language
-    host: "www.amazon.de"
+    host: "www.amazon.de",
+    
+    //Randomize user agent version. This helps to prevent request blocking from the amazon side
+    randomeUa: false
+    
+    //Timeout between requests. Timeout is set in mls: 1000 mls = 1 second
+    timeout: 0
 };
 ```
 

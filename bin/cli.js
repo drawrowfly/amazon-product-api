@@ -5,7 +5,7 @@ const os = require('os');
 
 const AmazonScraper = require('../lib/instance');
 
-const startScraper = async argv => {
+const startScraper = async (argv) => {
     argv.scrapeType = argv._[0];
     try {
         await AmazonScraper({ ...argv, cli: true, rating: [argv['min-rating'], argv['max-rating']] })._startScraper();
@@ -19,10 +19,10 @@ require('yargs')
     .example(`$0 products -k 'Xbox one'`)
     .example(`$0 products -k 'Xbox one' -H 'www.amazon.de'`)
     .example(`$0 reviews -a B01GW3H3U8`)
-    .command('products', 'scrape for a products from the provided key word', {}, argv => {
+    .command('products', 'scrape for a products from the provided key word', {}, (argv) => {
         startScraper(argv);
     })
-    .command('reviews', 'scrape reviews from a product, by providing ASIN', {}, argv => {
+    .command('reviews', 'scrape reviews from a product, by providing ASIN', {}, (argv) => {
         startScraper(argv);
     })
     .options({
@@ -87,8 +87,19 @@ require('yargs')
             type: 'string',
             describe: 'The custom amazon host (can be www.amazon.fr, www.amazon.de, etc.)',
         },
+        'random-ua': {
+            default: false,
+            type: 'boolean',
+            describe: 'Randomize user agent version. This helps to prevent request blocking from the amazon side',
+        },
+        timeout: {
+            alias: 't',
+            default: 0,
+            type: 'number',
+            describe: 'Timeout between requests. Timeout is set in mls: 1000 mls = 1 second',
+        },
     })
-    .check(argv => {
+    .check((argv) => {
         if (['products', 'reviews'].indexOf(argv['_'][0]) === -1) {
             throw 'Wrong command';
         }
@@ -107,6 +118,9 @@ require('yargs')
         }
         if (!argv['max-rating']) {
             argv['max-rating'] = 5;
+        }
+        if (argv['random-ua']) {
+            argv.randomUa = true;
         }
         return true;
     })

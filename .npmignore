@@ -1,0 +1,8 @@
+node_modules/
+.github/
+
+.gitignore
+.prettierrc.js
+*.csv
+*.zip
+test.ts

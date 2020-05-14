@@ -1,14 +1,11 @@
 #!/usr/bin/env node
-'use strict';
 
-const os = require('os');
-
-const AmazonScraper = require('../lib/instance');
+const AmazonScraper = require('../lib');
 
 const startScraper = async (argv) => {
     argv.scrapeType = argv._[0];
     try {
-        await AmazonScraper({ ...argv, cli: true, rating: [argv['min-rating'], argv['max-rating']] })._startScraper();
+        await AmazonScraper[argv.scrapeType]({ ...argv, cli: true, rating: [argv['min-rating'], argv['max-rating']] });
     } catch (error) {
         console.log(error);
     }
@@ -18,11 +15,15 @@ require('yargs')
     .usage('Usage: $0 <command> [options]')
     .example(`$0 products -k 'Xbox one'`)
     .example(`$0 products -k 'Xbox one' -H 'www.amazon.de'`)
-    .example(`$0 reviews -a B01GW3H3U8`)
+    .example(`$0 reviews B01GW3H3U8`)
+    .example(`$0 asin B01GW3H3U8`)
     .command('products', 'scrape for a products from the provided key word', {}, (argv) => {
         startScraper(argv);
     })
-    .command('reviews', 'scrape reviews from a product, by providing ASIN', {}, (argv) => {
+    .command('reviews [id]', 'scrape reviews from a product by using ASIN', {}, (argv) => {
+        startScraper(argv);
+    })
+    .command('asin [id]', 'scrape data from a single product by using ASIN', {}, (argv) => {
         startScraper(argv);
     })
     .options({
@@ -36,23 +37,16 @@ require('yargs')
             type: 'string',
             describe: "Amazon search keyword ex. 'Xbox one'",
         },
-        asin: {
-            alias: 'a',
-            default: '',
-            type: 'string',
-            describe: 'To scrape reviews you need to provide product ASIN(amazon product id)',
-        },
         number: {
             alias: 'n',
-            default: 10,
+            default: 20,
             type: 'number',
             describe: 'Number of products to scrape. Maximum 100 products or 300 reviews',
         },
-        save: {
-            alias: 's',
-            default: true,
-            type: 'boolean',
-            describe: 'Save to a CSV file?',
+        filetype: {
+            default: 'csv',
+            choices: ['csv', 'json', 'all', ''],
+            describe: "Type of the output file where data will be saved. 'all' - save datat to the ` 'json' and 'csv' files",
         },
         sort: {
             default: false,
@@ -100,7 +94,7 @@ require('yargs')
         },
     })
     .check((argv) => {
-        if (['products', 'reviews'].indexOf(argv['_'][0]) === -1) {
+        if (['products', 'reviews', 'asin'].indexOf(argv['_'][0]) === -1) {
             throw 'Wrong command';
         }
         if (argv['_'][0] === 'products') {
@@ -109,8 +103,18 @@ require('yargs')
             }
         }
         if (argv['_'][0] === 'reviews') {
-            if (!argv.asin || !argv.a) {
-                throw 'AsinId is missing';
+            if (!argv.id) {
+                throw 'ASIN is missing';
+            } else {
+                argv.asin = argv.id;
+            }
+        }
+
+        if (argv['_'][0] === 'asin') {
+            if (!argv.id) {
+                throw 'ASIN is missing';
+            } else {
+                argv.asin = argv.id;
             }
         }
         if (!argv['min-rating']) {

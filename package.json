@@ -1,41 +1,41 @@
 {
-  "name": "amazon-buddy",
-  "version": "1.4.16",
-  "description": "Amazon Scraper. You can scrape products from amazon search result and you can also scrape reviews from a specific product",
-  "main": "index.js",
-  "bin": {
-    "amazon-buddy": "bin/cli.js"
-  },
-  "directories": {
-    "lib": "lib"
-  },
-  "dependencies": {
-    "async": "^3.1.1",
-    "bluebird": "^3.7.2",
-    "cheerio": "^1.0.0-rc.3",
-    "json2csv": "^4.5.3",
-    "ora": "^4.0.2",
-    "request": "^2.88.0",
-    "request-promise": "^4.2.4",
-    "tough-cookie": "^3.0.1",
-    "yargs": "^14.2.0"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/drawrowfly/amazon-scraper.git"
-  },
-  "keywords": [
-    "amazon",
-    "scraper"
-  ],
-  "author": "drawrowfly",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/drawrowfly/amazon-scraper/issues"
-  },
-  "homepage": "https://github.com/drawrowfly/amazon-scraper#readme"
+    "name": "amazon-buddy",
+    "version": "1.4.16",
+    "description": "Amazon Scraper. You can scrape products from amazon search result and you can also scrape reviews from a specific product",
+    "main": "./lib/index.js",
+    "bin": {
+        "amazon-buddy": "bin/cli.js"
+    },
+    "files": [
+        "lib"
+    ],
+    "dependencies": {
+        "async": "^3.1.1",
+        "bluebird": "^3.7.2",
+        "cheerio": "^1.0.0-rc.3",
+        "json2csv": "^4.5.3",
+        "ora": "^4.0.2",
+        "request": "^2.88.0",
+        "request-promise": "^4.2.4",
+        "tough-cookie": "^3.0.1",
+        "yargs": "^14.2.0"
+    },
+    "devDependencies": {},
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/drawrowfly/amazon-scraper.git"
+    },
+    "keywords": [
+        "amazon",
+        "scraper"
+    ],
+    "author": "drawrowfly",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/drawrowfly/amazon-scraper/issues"
+    },
+    "homepage": "https://github.com/drawrowfly/amazon-scraper#readme"
 }

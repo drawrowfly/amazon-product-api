@@ -89,7 +89,7 @@ Options:
 
 Examples:
   amazon-buddy products -k 'Xbox one'
-  amazon-buddy products -k 'Xbox one' -h 'www.amazon.fr'
+  amazon-buddy products -k 'Xbox one' --host 'www.amazon.fr'
   amazon-buddy reviews B01GW3H3U8
   amazon-buddy asin B01GW3H3U8
 ```

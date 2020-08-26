@@ -72,8 +72,8 @@ Options:
   --keyword, -k   Amazon search keyword ex. 'Xbox one'    [string] [default: ""]
   --number, -n    Number of products to scrape. Maximum 100 products or 300
                   reviews                                 [number] [default: 20]
-  --filetype      Type of the output file where data will be saved. 'all' - save
-                  datat to the ` 'json' and 'csv' files
+  --filetype      Type of the output file where the data will be saved. 'all' -
+                  save data to the 'json' and 'csv' files
                             [choices: "csv", "json", "all", ""] [default: "csv"]
   --sort          If searching for the products then the list will be sorted by
                   the higher score(number of reviews*rating). If searching for
@@ -170,6 +170,7 @@ Show list of all available countries
 ```sh
 $ amazon-buddy countries
 ```
+
 **Output:**
 ![alt text](https://i.imgur.com/SyPRHcN.png)
 
@@ -180,19 +181,23 @@ Show list of all available categories from the Amazon.CO.UK
 ```sh
 $ amazon-buddy categories --country GB
 ```
+
 **Output:**
 ![alt text](https://i.imgur.com/k4MBg2h.png)
 
 ## Module
 
 ### Methods
+
 ```javascript
 .products() - product search
 .reviews() - reviews search
 .asin() - single product details
 .categories() - available categories
 ```
+
 ### Example
+
 ```javascript
 const amazonScraper = require('amazon-buddy');
 
@@ -201,31 +206,31 @@ const amazonScraper = require('amazon-buddy');
         // Collect 50 products from a keyword 'xbox one'
         // Default country is US
         const products = await amazonScraper.products({ keyword: 'Xbox One', number: 50 });
-        
+
         // Collect 50 products from a keyword 'xbox one' from Amazon.NL
-        const products = await amazonScraper.products({ keyword: 'Xbox One', number: 50, country: "NL" });
-        
+        const products = await amazonScraper.products({ keyword: 'Xbox One', number: 50, country: 'NL' });
+
         // Collect 50 products from a keyword 'xbox one' from Amazon.CO.UK
-        const products = await amazonScraper.products({ keyword: 'Xbox One', number: 50, country: "GB" });
-        
+        const products = await amazonScraper.products({ keyword: 'Xbox One', number: 50, country: 'GB' });
+
         // Collect products that are located on page number 2
         const reviews = await amazonScraper.products({ keyword: 'Xbox One', bulk: false, page: 2 });
-        
+
         // Collect 50 products from a keyword 'xbox one' with rating between 3-5 stars
         const products_rank = await amazonScraper.products({ keyword: 'Xbox One', number: 50, rating: [3, 5] });
 
         // Collect 50 reviews from a product ID B01GW3H3U8
         const reviews = await amazonScraper.reviews({ asin: 'B01GW3H3U8', number: 50 });
-        
+
         // Collect 50 reviews from a product ID B01GW3H3U8  with rating between 1-2 stars
         const reviews_rank = await amazonScraper.reviews({ asin: 'B01GW3H3U8', number: 50, rating: [1, 2] });
-    
+
         // Get single product details by using ASIN id
         const product_by_asin = await amazonScraper.asin({ asin: 'B01GW3H3U8' });
-        
+
         // Get categories from amazon.COM.AU
         const categories_AU = await amazonScraper.categories({ country: 'AU' });
-        
+
         // Get categories from amazon.CN
         const categories_CN = await amazonScraper.categories({ country: 'CN' });
     } catch (error) {
@@ -283,35 +288,37 @@ const amazonScraper = require('amazon-buddy');
 ### .asin() output
 
 ```javascript
-[{
-    title:
-        'Newest Flagship Microsoft Xbox One S 1TB HDD ' +
-        'Bundle with Two (2X) Wireless Controllers, 1-Month ' +
-        'Game Pass Trial, 14-Day Xbox Live Gold Trial - ' +
-        'White',
-    asin: 'B08231TPSF',
-    offerListingID: '',
-    url: 'https://www.amazon.com/dp/B08231TPSF',
-    reviews: { total_reviews: 302, rating: '4.6', answered_questions: 0 },
-    price: {
-        currency: 'USD',
-        current_price: 475.98,
-        discounted: false,
-        before_price: 475.98,
-        savings_amount: 0,
-        savings_percent: 0,
+[
+    {
+        title:
+            'Newest Flagship Microsoft Xbox One S 1TB HDD ' +
+            'Bundle with Two (2X) Wireless Controllers, 1-Month ' +
+            'Game Pass Trial, 14-Day Xbox Live Gold Trial - ' +
+            'White',
+        asin: 'B08231TPSF',
+        offerListingID: '',
+        url: 'https://www.amazon.com/dp/B08231TPSF',
+        reviews: { total_reviews: 302, rating: '4.6', answered_questions: 0 },
+        price: {
+            currency: 'USD',
+            current_price: 475.98,
+            discounted: false,
+            before_price: 475.98,
+            savings_amount: 0,
+            savings_percent: 0,
+        },
+        images: [
+            'https://images-na.ssl-images-amazon.com/images/I/31WOQ4LhYXL._AC_SY879_.jpg',
+            'https://images-na.ssl-images-amazon.com/images/I/31t-e5lFMHL._AC_SY879_.jpg',
+        ],
+        storeID: '',
+        brand: 'Brand: Xbox',
+        soldBy: '',
+        fulfilledBy: '',
+        qtyPerOrder: 'na',
+        badges: { amazonChoice: false, amazonPrime: false },
     },
-    images: [
-        'https://images-na.ssl-images-amazon.com/images/I/31WOQ4LhYXL._AC_SY879_.jpg',
-        'https://images-na.ssl-images-amazon.com/images/I/31t-e5lFMHL._AC_SY879_.jpg',
-    ],
-    storeID: '',
-    brand: 'Brand: Xbox',
-    soldBy: '',
-    fulfilledBy: '',
-    qtyPerOrder: 'na',
-    badges: { amazonChoice: false, amazonPrime: false },
-}]
+];
 ```
 
 ### .categories() output
@@ -354,7 +361,7 @@ const amazonScraper = require('amazon-buddy');
 ```javascript
 const options = {
     //Search keyword: {string default: ""}
-    keyword: "",
+    keyword: '',
 
     //Number of products to scrape: {int default: 10}
     number: 10,
@@ -373,10 +380,10 @@ const options = {
     filetype: '',
 
     //Set proxy: {string default: ""}
-    proxy: "",
+    proxy: '',
 
     //Sort by rating. [minRating, maxRating]: {array default: [1,5]}
-    rating:[1,5],
+    rating: [1, 5],
 
     //Sorting. If searching for a products then list will be sorted by a higher score(number of reviews*rating). If searching for a reviews then they will be sorted by rating.: {boolean default: false}
     sort: false,
@@ -391,21 +398,21 @@ const options = {
     //List of all countries is posted below
     //Value should be in ISO 3166 (Alpha-2 code) format
     //{string default: "US"}
-    country: "GB",
-    
+    country: 'GB',
+
     // Number of async task {number default: 5}
-    // The more the faster but do not go wild as usually 5 is enough 
+    // The more the faster but do not go wild as usually 5 is enough
     asyncTasks: 5,
-    
+
     //Product search can be performed in the specific category
     //To get list of categories you can use method .categories()
-    category:"digital-text",
-    
+    category: 'digital-text',
+
     //Some product metadata is binded to the ZIP code
     //When you are setting the ZIP code new session is being generated by the Amazon
     //By setting cookie values you will receive more accurate data(pricing and etc)
     //Cookie example that can be extracted from the browser :session-id=222-22222-22222; session-id-time=222221l; ubid-main=444-4444-4444444
-    cookie:"",
+    cookie: '',
 
     //Randomize user agent version. This helps to prevent request blocking from the amazon side
     randomUa: false,
@@ -414,7 +421,9 @@ const options = {
     timeout: 0,
 };
 ```
+
 ### List of supported countries
+
 ```javascript
 {
     US: {

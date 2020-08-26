@@ -5,7 +5,28 @@ const AmazonScraper = require('../lib');
 const startScraper = async (argv) => {
     argv.scrapeType = argv._[0];
     try {
-        await AmazonScraper[argv.scrapeType]({ ...argv, cli: true, rating: [argv['min-rating'], argv['max-rating']] });
+        const data = await AmazonScraper[argv.scrapeType]({ ...argv, cli: true, rating: [argv['min-rating'], argv['max-rating']] });
+        switch (argv.scrapeType) {
+            case 'countries':
+                console.table(data);
+                break;
+            case 'categories':
+                console.table(data);
+                break;
+            case 'products':
+            case 'reviews':
+                if (!argv.filetype) {
+                    console.log(JSON.stringify(data));
+                }
+                break;
+            case 'asin':
+                if (!argv.filetype) {
+                    console.log(data.result[0]);
+                }
+                break;
+            default:
+                break;
+        }
     } catch (error) {
         console.log(error);
     }
@@ -14,22 +35,36 @@ const startScraper = async (argv) => {
 require('yargs')
     .usage('Usage: $0 <command> [options]')
     .example(`$0 products -k 'Xbox one'`)
-    .example(`$0 products -k 'Xbox one' -H 'www.amazon.de'`)
+    .example(`$0 products -k 'Xbox one' --country 'GB'`)
     .example(`$0 reviews B01GW3H3U8`)
     .example(`$0 asin B01GW3H3U8`)
-    .command('products', 'scrape for a products from the provided key word', {}, (argv) => {
+    .example(`$0 categories`)
+    .example(`$0 countries`)
+    .command('products', 'collect products by using keyword', {}, (argv) => {
         startScraper(argv);
     })
-    .command('reviews [id]', 'scrape reviews from a product by using ASIN', {}, (argv) => {
+    .command('reviews [id]', 'collect reviews from product by using ASIN id', {}, (argv) => {
         startScraper(argv);
     })
-    .command('asin [id]', 'scrape data from a single product by using ASIN', {}, (argv) => {
+    .command('asin [id]', 'single product details', {}, (argv) => {
+        startScraper(argv);
+    })
+    .command('categories', 'get list of categories', {}, (argv) => {
+        startScraper(argv);
+    })
+    .command('countries', 'get list of countries', {}, (argv) => {
         startScraper(argv);
     })
     .options({
         help: {
             alias: 'h',
             describe: 'help',
+        },
+        async: {
+            alias: 'a',
+            default: '5',
+            type: 'string',
+            describe: 'Number of async tasks',
         },
         keyword: {
             alias: 'k',
@@ -52,7 +87,7 @@ require('yargs')
             default: false,
             type: 'boolean',
             describe:
-                'If searching for a products then list will be sorted by a higher score(number of reviews*rating). If searching for a reviews then they will be sorted by rating.',
+                'If searching for the products then the list will be sorted by the higher score(number of reviews*rating). If searching for the reviews then they will be sorted by the rating.',
         },
         discount: {
             alias: 'd',
@@ -75,16 +110,26 @@ require('yargs')
             type: 'number',
             describe: 'Maximum allowed rating',
         },
-        host: {
-            alias: 'H',
-            default: 'www.amazon.com',
+        country: {
+            default: 'US',
             type: 'string',
-            describe: 'The custom amazon host (can be www.amazon.fr, www.amazon.de, etc.)',
+            describe:
+                'In ISO 3166 (Alpha-2 code) format. To get available list of countries type and use (index) from the shown table as value: amazon-buddy countries',
+        },
+        category: {
+            default: 'aps',
+            type: 'string',
+            describe: 'To get available list of categories type and use (index) from the shown table as value: amazon-buddy categories',
         },
         'random-ua': {
             default: false,
             type: 'boolean',
             describe: 'Randomize user agent version. This helps to prevent request blocking from the amazon side',
+        },
+        'user-agent': {
+            default: '',
+            type: 'string',
+            describe: 'Set custom user-agent',
         },
         timeout: {
             alias: 't',
@@ -94,7 +139,7 @@ require('yargs')
         },
     })
     .check((argv) => {
-        if (['products', 'reviews', 'asin'].indexOf(argv['_'][0]) === -1) {
+        if (['products', 'reviews', 'asin', 'categories', 'countries'].indexOf(argv['_'][0]) === -1) {
             throw 'Wrong command';
         }
         if (argv['_'][0] === 'products') {
@@ -117,11 +162,22 @@ require('yargs')
                 argv.asin = argv.id;
             }
         }
+
+        // Minimum allowed rating is 1
         if (!argv['min-rating']) {
             argv['min-rating'] = 1;
         }
+        // Maximum allowed rating is 5
         if (!argv['max-rating']) {
             argv['max-rating'] = 5;
+        }
+
+        // If custom 'user-agent' was set then we need to make sure that 'random-ua' is disabled
+        if (argv['random-ua'] && argv['user-agent']) {
+            argv['random-ua'] = false;
+        }
+        if (argv['user-agent']) {
+            argv.ua = argv['user-agent'];
         }
         if (argv['random-ua']) {
             argv.randomUa = true;

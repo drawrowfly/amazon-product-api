@@ -10,7 +10,7 @@
         "lib"
     ],
     "dependencies": {
-        "async": "^3.1.1",
+        "async": "^3.2.0",
         "bluebird": "^3.7.2",
         "cheerio": "^1.0.0-rc.3",
         "json2csv": "^4.5.3",

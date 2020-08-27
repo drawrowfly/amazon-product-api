@@ -114,12 +114,12 @@ require('yargs')
             default: 'US',
             type: 'string',
             describe:
-                'In ISO 3166 (Alpha-2 code) format. To get available list of countries type and use (index) from the shown table as value: amazon-buddy countries',
+                'In ISO 3166 (Alpha-2 code) format. To get available list of countries enter and use country_code value from the displayed table: amazon-buddy countries',
         },
         category: {
             default: 'aps',
             type: 'string',
-            describe: 'To get available list of categories type and use (index) from the shown table as value: amazon-buddy categories',
+            describe: 'To get available list of categories type and use {category} value from the displayed table: amazon-buddy categories',
         },
         'random-ua': {
             default: false,

@@ -1,8 +1,8 @@
-# Amazon Product/Reviews Scraper
+# Amazon Product Api (Unofficial)
 
 ![NPM](https://img.shields.io/npm/l/amazon-buddy.svg?style=for-the-badge) ![npm](https://img.shields.io/npm/v/amazon-buddy.svg?style=for-the-badge)
 
-Useful tool to scrape product information from the amazon
+Very useful tool that is able to extract almost same amount of data as the official Amazon Product API
 
 ## If you like this tool then please Star it
 
@@ -14,9 +14,11 @@ Useful tool to scrape product information from the amazon
 
 ## Features
 
--   **Scrape products from the search result**
--   **Scrape product data by asin**
--   **Scrape product reviews**
+-   **Extract product data from the search result(by category, by country)**
+-   **Extract lots of signle product data by using ASIN id**
+-   **Extract product reviews data by using ASIN id**
+-   **Extract list of categories**
+-   **Is supporting all available Amazon Marketplaces**
 -   Sort result by sponsored products only
 -   Sorts result by discounted products only
 -   Result can be saved to the JSON/CSV files
@@ -288,37 +290,455 @@ const amazonScraper = require('amazon-buddy');
 ### .asin() output
 
 ```javascript
-[
-    {
-        title:
-            'Newest Flagship Microsoft Xbox One S 1TB HDD ' +
-            'Bundle with Two (2X) Wireless Controllers, 1-Month ' +
-            'Game Pass Trial, 14-Day Xbox Live Gold Trial - ' +
-            'White',
-        asin: 'B08231TPSF',
-        offerListingID: '',
-        url: 'https://www.amazon.com/dp/B08231TPSF',
-        reviews: { total_reviews: 302, rating: '4.6', answered_questions: 0 },
-        price: {
-            currency: 'USD',
-            current_price: 475.98,
-            discounted: false,
-            before_price: 475.98,
-            savings_amount: 0,
-            savings_percent: 0,
+{
+    title: 'New Apple MacBook Pro (16-inch, 16GB RAM, 512GB Storage, 2.6GHz Intel Core i7) - Space Gray',
+    description: '',
+    feature_bullets: [
+        'Ninth-generation 6-Core Intel Core i7 Processor',
+        'Stunning 16-inch Retina Display with True Tone technology',
+        'Touch Bar and Touch ID',
+        'AMD Radeon Pro 5300M Graphics with GDDR6 memory',
+        'Ultrafast SSD',
+        'Intel UHD Graphics 630',
+        'Six-speaker system with force-cancelling woofers',
+        'Four Thunderbolt 3 (USB-C) ports',
+        'Up to 11 hours of battery life',
+        '802.11AC Wi-Fi',
+    ],
+    variants: [
+        {
+            asin: 'B081FWLDZ2',
+            images: [
+                {
+                    large: 'https://images-na.ssl-images-amazon.com/images/I/31Ky7oRBGtL._AC_.jpg',
+                    thumb: 'https://images-na.ssl-images-amazon.com/images/I/31Ky7oRBGtL._AC_SR38,50_.jpg',
+                    hiRes: 'https://images-na.ssl-images-amazon.com/images/I/71UItVa0VmL._AC_SL1500_.jpg',
+                    variant: 'MAIN',
+                    main: {
+                        'https://images-na.ssl-images-amazon.com/images/I/71UItVa0VmL._AC_SX466_.jpg': ['466', '466'],
+                        'https://images-na.ssl-images-amazon.com/images/I/71UItVa0VmL._AC_SX385_.jpg': ['385', '385'],
+                        'https://images-na.ssl-images-amazon.com/images/I/71UItVa0VmL._AC_SX425_.jpg': ['425', '425'],
+                        'https://images-na.ssl-images-amazon.com/images/I/71UItVa0VmL._AC_SX569_.jpg': ['569', '569'],
+                        'https://images-na.ssl-images-amazon.com/images/I/71UItVa0VmL._AC_SX679_.jpg': ['679', '679'],
+                        'https://images-na.ssl-images-amazon.com/images/I/71UItVa0VmL._AC_SX342_.jpg': ['342', '342'],
+                        'https://images-na.ssl-images-amazon.com/images/I/71UItVa0VmL._AC_SX522_.jpg': ['522', '522'],
+                    },
+                },
+                {
+                    large: 'https://images-na.ssl-images-amazon.com/images/I/418onp2C2%2BL._AC_.jpg',
+                    thumb: 'https://images-na.ssl-images-amazon.com/images/I/418onp2C2%2BL._AC_SR38,50_.jpg',
+                    hiRes: 'https://images-na.ssl-images-amazon.com/images/I/81p5n9MO4QL._AC_SL1500_.jpg',
+                    variant: 'PT01',
+                    main: {
+                        'https://images-na.ssl-images-amazon.com/images/I/81p5n9MO4QL._AC_SX679_.jpg': ['679', '679'],
+                        'https://images-na.ssl-images-amazon.com/images/I/81p5n9MO4QL._AC_SX342_.jpg': ['342', '342'],
+                        'https://images-na.ssl-images-amazon.com/images/I/81p5n9MO4QL._AC_SX425_.jpg': ['425', '425'],
+                        'https://images-na.ssl-images-amazon.com/images/I/81p5n9MO4QL._AC_SX522_.jpg': ['522', '522'],
+                        'https://images-na.ssl-images-amazon.com/images/I/81p5n9MO4QL._AC_SX569_.jpg': ['569', '569'],
+                        'https://images-na.ssl-images-amazon.com/images/I/81p5n9MO4QL._AC_SX385_.jpg': ['385', '385'],
+                        'https://images-na.ssl-images-amazon.com/images/I/81p5n9MO4QL._AC_SX466_.jpg': ['466', '466'],
+                    },
+                },
+                {
+                    large: 'https://images-na.ssl-images-amazon.com/images/I/51U4uOwYbUL._AC_.jpg',
+                    thumb: 'https://images-na.ssl-images-amazon.com/images/I/51U4uOwYbUL._AC_SR38,50_.jpg',
+                    hiRes: 'https://images-na.ssl-images-amazon.com/images/I/91rcadsWWwL._AC_SL1500_.jpg',
+                    variant: 'PT02',
+                    main: {
+                        'https://images-na.ssl-images-amazon.com/images/I/91rcadsWWwL._AC_SX522_.jpg': ['522', '522'],
+                        'https://images-na.ssl-images-amazon.com/images/I/91rcadsWWwL._AC_SX569_.jpg': ['569', '569'],
+                        'https://images-na.ssl-images-amazon.com/images/I/91rcadsWWwL._AC_SX679_.jpg': ['679', '679'],
+                        'https://images-na.ssl-images-amazon.com/images/I/91rcadsWWwL._AC_SX342_.jpg': ['342', '342'],
+                        'https://images-na.ssl-images-amazon.com/images/I/91rcadsWWwL._AC_SX425_.jpg': ['425', '425'],
+                        'https://images-na.ssl-images-amazon.com/images/I/91rcadsWWwL._AC_SX466_.jpg': ['466', '466'],
+                        'https://images-na.ssl-images-amazon.com/images/I/91rcadsWWwL._AC_SX385_.jpg': ['385', '385'],
+                    },
+                },
+                {
+                    large: 'https://images-na.ssl-images-amazon.com/images/I/51MFgSmK%2B1L._AC_.jpg',
+                    thumb: 'https://images-na.ssl-images-amazon.com/images/I/51MFgSmK%2B1L._AC_SR38,50_.jpg',
+                    hiRes: 'https://images-na.ssl-images-amazon.com/images/I/91dZ8gjhO9L._AC_SL1500_.jpg',
+                    variant: 'PT03',
+                    main: {
+                        'https://images-na.ssl-images-amazon.com/images/I/91dZ8gjhO9L._AC_SX385_.jpg': ['385', '385'],
+                        'https://images-na.ssl-images-amazon.com/images/I/91dZ8gjhO9L._AC_SX569_.jpg': ['569', '569'],
+                        'https://images-na.ssl-images-amazon.com/images/I/91dZ8gjhO9L._AC_SX425_.jpg': ['425', '425'],
+                        'https://images-na.ssl-images-amazon.com/images/I/91dZ8gjhO9L._AC_SX466_.jpg': ['466', '466'],
+                        'https://images-na.ssl-images-amazon.com/images/I/91dZ8gjhO9L._AC_SX522_.jpg': ['522', '522'],
+                        'https://images-na.ssl-images-amazon.com/images/I/91dZ8gjhO9L._AC_SX342_.jpg': ['342', '342'],
+                        'https://images-na.ssl-images-amazon.com/images/I/91dZ8gjhO9L._AC_SX679_.jpg': ['679', '679'],
+                    },
+                },
+                {
+                    large: 'https://images-na.ssl-images-amazon.com/images/I/31tkOrl17nL._AC_.jpg',
+                    thumb: 'https://images-na.ssl-images-amazon.com/images/I/31tkOrl17nL._AC_SR38,50_.jpg',
+                    hiRes: 'https://images-na.ssl-images-amazon.com/images/I/81-X9dGhCkL._AC_SL1500_.jpg',
+                    variant: 'PT04',
+                    main: {
+                        'https://images-na.ssl-images-amazon.com/images/I/81-X9dGhCkL._AC_SX522_.jpg': ['522', '522'],
+                        'https://images-na.ssl-images-amazon.com/images/I/81-X9dGhCkL._AC_SX569_.jpg': ['569', '569'],
+                        'https://images-na.ssl-images-amazon.com/images/I/81-X9dGhCkL._AC_SX679_.jpg': ['679', '679'],
+                        'https://images-na.ssl-images-amazon.com/images/I/81-X9dGhCkL._AC_SX342_.jpg': ['342', '342'],
+                        'https://images-na.ssl-images-amazon.com/images/I/81-X9dGhCkL._AC_SX425_.jpg': ['425', '425'],
+                        'https://images-na.ssl-images-amazon.com/images/I/81-X9dGhCkL._AC_SX466_.jpg': ['466', '466'],
+                        'https://images-na.ssl-images-amazon.com/images/I/81-X9dGhCkL._AC_SX385_.jpg': ['385', '385'],
+                    },
+                },
+                {
+                    large: 'https://images-na.ssl-images-amazon.com/images/I/21nvGq8dsRL._AC_.jpg',
+                    thumb: 'https://images-na.ssl-images-amazon.com/images/I/21nvGq8dsRL._AC_SR38,50_.jpg',
+                    hiRes: 'https://images-na.ssl-images-amazon.com/images/I/71HU1BlSy7L._AC_SL1500_.jpg',
+                    variant: 'PT05',
+                    main: {
+                        'https://images-na.ssl-images-amazon.com/images/I/71HU1BlSy7L._AC_SX466_.jpg': ['466', '466'],
+                        'https://images-na.ssl-images-amazon.com/images/I/71HU1BlSy7L._AC_SX385_.jpg': ['385', '385'],
+                        'https://images-na.ssl-images-amazon.com/images/I/71HU1BlSy7L._AC_SX342_.jpg': ['342', '342'],
+                        'https://images-na.ssl-images-amazon.com/images/I/71HU1BlSy7L._AC_SX569_.jpg': ['569', '569'],
+                        'https://images-na.ssl-images-amazon.com/images/I/71HU1BlSy7L._AC_SX425_.jpg': ['425', '425'],
+                        'https://images-na.ssl-images-amazon.com/images/I/71HU1BlSy7L._AC_SX522_.jpg': ['522', '522'],
+                        'https://images-na.ssl-images-amazon.com/images/I/71HU1BlSy7L._AC_SX679_.jpg': ['679', '679'],
+                    },
+                },
+            ],
+            title: 'Intel Core i7 512GB Silver',
+            link: 'https://www.amazon.com/dp/B081FWLDZ2/?th=1&psc=1',
+            is_current_product: false,
+            price: '',
         },
-        images: [
-            'https://images-na.ssl-images-amazon.com/images/I/31WOQ4LhYXL._AC_SY879_.jpg',
-            'https://images-na.ssl-images-amazon.com/images/I/31t-e5lFMHL._AC_SY879_.jpg',
-        ],
-        storeID: '',
-        brand: 'Brand: Xbox',
-        soldBy: '',
-        fulfilledBy: '',
-        qtyPerOrder: 'na',
-        badges: { amazonChoice: false, amazonPrime: false },
+        {
+            asin: 'B081FZV45H',
+            images: [
+                {
+                    large: 'https://images-na.ssl-images-amazon.com/images/I/41S63IQRFXL._AC_.jpg',
+                    thumb: 'https://images-na.ssl-images-amazon.com/images/I/41S63IQRFXL._AC_SR38,50_.jpg',
+                    hiRes: 'https://images-na.ssl-images-amazon.com/images/I/71pC69I3lzL._AC_SL1500_.jpg',
+                    variant: 'MAIN',
+                    main: {
+                        'https://images-na.ssl-images-amazon.com/images/I/71pC69I3lzL._AC_SX679_.jpg': ['679', '679'],
+                        'https://images-na.ssl-images-amazon.com/images/I/71pC69I3lzL._AC_SX342_.jpg': ['342', '342'],
+                        'https://images-na.ssl-images-amazon.com/images/I/71pC69I3lzL._AC_SX425_.jpg': ['425', '425'],
+                        'https://images-na.ssl-images-amazon.com/images/I/71pC69I3lzL._AC_SX522_.jpg': ['522', '522'],
+                        'https://images-na.ssl-images-amazon.com/images/I/71pC69I3lzL._AC_SX569_.jpg': ['569', '569'],
+                        'https://images-na.ssl-images-amazon.com/images/I/71pC69I3lzL._AC_SX385_.jpg': ['385', '385'],
+                        'https://images-na.ssl-images-amazon.com/images/I/71pC69I3lzL._AC_SX466_.jpg': ['466', '466'],
+                    },
+                },
+                {
+                    large: 'https://images-na.ssl-images-amazon.com/images/I/41UD%2B0RIxmL._AC_.jpg',
+                    thumb: 'https://images-na.ssl-images-amazon.com/images/I/41UD%2B0RIxmL._AC_SR38,50_.jpg',
+                    hiRes: 'https://images-na.ssl-images-amazon.com/images/I/81aot0jAfFL._AC_SL1500_.jpg',
+                    variant: 'PT01',
+                    main: {
+                        'https://images-na.ssl-images-amazon.com/images/I/81aot0jAfFL._AC_SX385_.jpg': ['385', '385'],
+                        'https://images-na.ssl-images-amazon.com/images/I/81aot0jAfFL._AC_SX522_.jpg': ['522', '522'],
+                        'https://images-na.ssl-images-amazon.com/images/I/81aot0jAfFL._AC_SX569_.jpg': ['569', '569'],
+                        'https://images-na.ssl-images-amazon.com/images/I/81aot0jAfFL._AC_SX342_.jpg': ['342', '342'],
+                        'https://images-na.ssl-images-amazon.com/images/I/81aot0jAfFL._AC_SX679_.jpg': ['679', '679'],
+                        'https://images-na.ssl-images-amazon.com/images/I/81aot0jAfFL._AC_SX466_.jpg': ['466', '466'],
+                        'https://images-na.ssl-images-amazon.com/images/I/81aot0jAfFL._AC_SX425_.jpg': ['425', '425'],
+                    },
+                },
+                {
+                    large: 'https://images-na.ssl-images-amazon.com/images/I/51pODxHeboL._AC_.jpg',
+                    thumb: 'https://images-na.ssl-images-amazon.com/images/I/51pODxHeboL._AC_SR38,50_.jpg',
+                    hiRes: 'https://images-na.ssl-images-amazon.com/images/I/91GRfDGDJIL._AC_SL1500_.jpg',
+                    variant: 'PT02',
+                    main: {
+                        'https://images-na.ssl-images-amazon.com/images/I/91GRfDGDJIL._AC_SX522_.jpg': ['522', '522'],
+                        'https://images-na.ssl-images-amazon.com/images/I/91GRfDGDJIL._AC_SX679_.jpg': ['679', '679'],
+                        'https://images-na.ssl-images-amazon.com/images/I/91GRfDGDJIL._AC_SX466_.jpg': ['466', '466'],
+                        'https://images-na.ssl-images-amazon.com/images/I/91GRfDGDJIL._AC_SX385_.jpg': ['385', '385'],
+                        'https://images-na.ssl-images-amazon.com/images/I/91GRfDGDJIL._AC_SX569_.jpg': ['569', '569'],
+                        'https://images-na.ssl-images-amazon.com/images/I/91GRfDGDJIL._AC_SX342_.jpg': ['342', '342'],
+                        'https://images-na.ssl-images-amazon.com/images/I/91GRfDGDJIL._AC_SX425_.jpg': ['425', '425'],
+                    },
+                },
+                {
+                    large: 'https://images-na.ssl-images-amazon.com/images/I/519Lka7j2EL._AC_.jpg',
+                    thumb: 'https://images-na.ssl-images-amazon.com/images/I/519Lka7j2EL._AC_SR38,50_.jpg',
+                    hiRes: 'https://images-na.ssl-images-amazon.com/images/I/91GsCwayBPL._AC_SL1500_.jpg',
+                    variant: 'PT03',
+                    main: {
+                        'https://images-na.ssl-images-amazon.com/images/I/91GsCwayBPL._AC_SX342_.jpg': ['342', '342'],
+                        'https://images-na.ssl-images-amazon.com/images/I/91GsCwayBPL._AC_SX679_.jpg': ['679', '679'],
+                        'https://images-na.ssl-images-amazon.com/images/I/91GsCwayBPL._AC_SX522_.jpg': ['522', '522'],
+                        'https://images-na.ssl-images-amazon.com/images/I/91GsCwayBPL._AC_SX466_.jpg': ['466', '466'],
+                        'https://images-na.ssl-images-amazon.com/images/I/91GsCwayBPL._AC_SX385_.jpg': ['385', '385'],
+                        'https://images-na.ssl-images-amazon.com/images/I/91GsCwayBPL._AC_SX569_.jpg': ['569', '569'],
+                        'https://images-na.ssl-images-amazon.com/images/I/91GsCwayBPL._AC_SX425_.jpg': ['425', '425'],
+                    },
+                },
+                {
+                    large: 'https://images-na.ssl-images-amazon.com/images/I/31om7IXMIbL._AC_.jpg',
+                    thumb: 'https://images-na.ssl-images-amazon.com/images/I/31om7IXMIbL._AC_SR38,50_.jpg',
+                    hiRes: 'https://images-na.ssl-images-amazon.com/images/I/81mJ-Mdc-OL._AC_SL1500_.jpg',
+                    variant: 'PT04',
+                    main: {
+                        'https://images-na.ssl-images-amazon.com/images/I/81mJ-Mdc-OL._AC_SX425_.jpg': ['425', '425'],
+                        'https://images-na.ssl-images-amazon.com/images/I/81mJ-Mdc-OL._AC_SX679_.jpg': ['679', '679'],
+                        'https://images-na.ssl-images-amazon.com/images/I/81mJ-Mdc-OL._AC_SX522_.jpg': ['522', '522'],
+                        'https://images-na.ssl-images-amazon.com/images/I/81mJ-Mdc-OL._AC_SX342_.jpg': ['342', '342'],
+                        'https://images-na.ssl-images-amazon.com/images/I/81mJ-Mdc-OL._AC_SX466_.jpg': ['466', '466'],
+                        'https://images-na.ssl-images-amazon.com/images/I/81mJ-Mdc-OL._AC_SX569_.jpg': ['569', '569'],
+                        'https://images-na.ssl-images-amazon.com/images/I/81mJ-Mdc-OL._AC_SX385_.jpg': ['385', '385'],
+                    },
+                },
+                {
+                    large: 'https://images-na.ssl-images-amazon.com/images/I/21HDW0eoP7L._AC_.jpg',
+                    thumb: 'https://images-na.ssl-images-amazon.com/images/I/21HDW0eoP7L._AC_SR38,50_.jpg',
+                    hiRes: 'https://images-na.ssl-images-amazon.com/images/I/718Pz9bYxWL._AC_SL1500_.jpg',
+                    variant: 'PT05',
+                    main: {
+                        'https://images-na.ssl-images-amazon.com/images/I/718Pz9bYxWL._AC_SX569_.jpg': ['569', '569'],
+                        'https://images-na.ssl-images-amazon.com/images/I/718Pz9bYxWL._AC_SX385_.jpg': ['385', '385'],
+                        'https://images-na.ssl-images-amazon.com/images/I/718Pz9bYxWL._AC_SX466_.jpg': ['466', '466'],
+                        'https://images-na.ssl-images-amazon.com/images/I/718Pz9bYxWL._AC_SX425_.jpg': ['425', '425'],
+                        'https://images-na.ssl-images-amazon.com/images/I/718Pz9bYxWL._AC_SX679_.jpg': ['679', '679'],
+                        'https://images-na.ssl-images-amazon.com/images/I/718Pz9bYxWL._AC_SX342_.jpg': ['342', '342'],
+                        'https://images-na.ssl-images-amazon.com/images/I/718Pz9bYxWL._AC_SX522_.jpg': ['522', '522'],
+                    },
+                },
+            ],
+            title: 'Intel Core i7 512GB Space Gray',
+            link: 'https://www.amazon.com/dp/B081FZV45H/?th=1&psc=1',
+            is_current_product: true,
+            price: '',
+        },
+        {
+            asin: 'B081FTNGNC',
+            images: [
+                {
+                    large: 'https://images-na.ssl-images-amazon.com/images/I/31Ky7oRBGtL._AC_.jpg',
+                    thumb: 'https://images-na.ssl-images-amazon.com/images/I/31Ky7oRBGtL._AC_SR38,50_.jpg',
+                    hiRes: 'https://images-na.ssl-images-amazon.com/images/I/71UItVa0VmL._AC_SL1500_.jpg',
+                    variant: 'MAIN',
+                    main: {
+                        'https://images-na.ssl-images-amazon.com/images/I/71UItVa0VmL._AC_SX466_.jpg': ['466', '466'],
+                        'https://images-na.ssl-images-amazon.com/images/I/71UItVa0VmL._AC_SX385_.jpg': ['385', '385'],
+                        'https://images-na.ssl-images-amazon.com/images/I/71UItVa0VmL._AC_SX425_.jpg': ['425', '425'],
+                        'https://images-na.ssl-images-amazon.com/images/I/71UItVa0VmL._AC_SX569_.jpg': ['569', '569'],
+                        'https://images-na.ssl-images-amazon.com/images/I/71UItVa0VmL._AC_SX679_.jpg': ['679', '679'],
+                        'https://images-na.ssl-images-amazon.com/images/I/71UItVa0VmL._AC_SX342_.jpg': ['342', '342'],
+                        'https://images-na.ssl-images-amazon.com/images/I/71UItVa0VmL._AC_SX522_.jpg': ['522', '522'],
+                    },
+                },
+                {
+                    large: 'https://images-na.ssl-images-amazon.com/images/I/418onp2C2%2BL._AC_.jpg',
+                    thumb: 'https://images-na.ssl-images-amazon.com/images/I/418onp2C2%2BL._AC_SR38,50_.jpg',
+                    hiRes: 'https://images-na.ssl-images-amazon.com/images/I/81p5n9MO4QL._AC_SL1500_.jpg',
+                    variant: 'PT01',
+                    main: {
+                        'https://images-na.ssl-images-amazon.com/images/I/81p5n9MO4QL._AC_SX679_.jpg': ['679', '679'],
+                        'https://images-na.ssl-images-amazon.com/images/I/81p5n9MO4QL._AC_SX342_.jpg': ['342', '342'],
+                        'https://images-na.ssl-images-amazon.com/images/I/81p5n9MO4QL._AC_SX425_.jpg': ['425', '425'],
+                        'https://images-na.ssl-images-amazon.com/images/I/81p5n9MO4QL._AC_SX522_.jpg': ['522', '522'],
+                        'https://images-na.ssl-images-amazon.com/images/I/81p5n9MO4QL._AC_SX569_.jpg': ['569', '569'],
+                        'https://images-na.ssl-images-amazon.com/images/I/81p5n9MO4QL._AC_SX385_.jpg': ['385', '385'],
+                        'https://images-na.ssl-images-amazon.com/images/I/81p5n9MO4QL._AC_SX466_.jpg': ['466', '466'],
+                    },
+                },
+                {
+                    large: 'https://images-na.ssl-images-amazon.com/images/I/51U4uOwYbUL._AC_.jpg',
+                    thumb: 'https://images-na.ssl-images-amazon.com/images/I/51U4uOwYbUL._AC_SR38,50_.jpg',
+                    hiRes: 'https://images-na.ssl-images-amazon.com/images/I/91rcadsWWwL._AC_SL1500_.jpg',
+                    variant: 'PT02',
+                    main: {
+                        'https://images-na.ssl-images-amazon.com/images/I/91rcadsWWwL._AC_SX522_.jpg': ['522', '522'],
+                        'https://images-na.ssl-images-amazon.com/images/I/91rcadsWWwL._AC_SX569_.jpg': ['569', '569'],
+                        'https://images-na.ssl-images-amazon.com/images/I/91rcadsWWwL._AC_SX679_.jpg': ['679', '679'],
+                        'https://images-na.ssl-images-amazon.com/images/I/91rcadsWWwL._AC_SX342_.jpg': ['342', '342'],
+                        'https://images-na.ssl-images-amazon.com/images/I/91rcadsWWwL._AC_SX425_.jpg': ['425', '425'],
+                        'https://images-na.ssl-images-amazon.com/images/I/91rcadsWWwL._AC_SX466_.jpg': ['466', '466'],
+                        'https://images-na.ssl-images-amazon.com/images/I/91rcadsWWwL._AC_SX385_.jpg': ['385', '385'],
+                    },
+                },
+                {
+                    large: 'https://images-na.ssl-images-amazon.com/images/I/51MFgSmK%2B1L._AC_.jpg',
+                    thumb: 'https://images-na.ssl-images-amazon.com/images/I/51MFgSmK%2B1L._AC_SR38,50_.jpg',
+                    hiRes: 'https://images-na.ssl-images-amazon.com/images/I/91dZ8gjhO9L._AC_SL1500_.jpg',
+                    variant: 'PT03',
+                    main: {
+                        'https://images-na.ssl-images-amazon.com/images/I/91dZ8gjhO9L._AC_SX385_.jpg': ['385', '385'],
+                        'https://images-na.ssl-images-amazon.com/images/I/91dZ8gjhO9L._AC_SX569_.jpg': ['569', '569'],
+                        'https://images-na.ssl-images-amazon.com/images/I/91dZ8gjhO9L._AC_SX425_.jpg': ['425', '425'],
+                        'https://images-na.ssl-images-amazon.com/images/I/91dZ8gjhO9L._AC_SX466_.jpg': ['466', '466'],
+                        'https://images-na.ssl-images-amazon.com/images/I/91dZ8gjhO9L._AC_SX522_.jpg': ['522', '522'],
+                        'https://images-na.ssl-images-amazon.com/images/I/91dZ8gjhO9L._AC_SX342_.jpg': ['342', '342'],
+                        'https://images-na.ssl-images-amazon.com/images/I/91dZ8gjhO9L._AC_SX679_.jpg': ['679', '679'],
+                    },
+                },
+                {
+                    large: 'https://images-na.ssl-images-amazon.com/images/I/31tkOrl17nL._AC_.jpg',
+                    thumb: 'https://images-na.ssl-images-amazon.com/images/I/31tkOrl17nL._AC_SR38,50_.jpg',
+                    hiRes: 'https://images-na.ssl-images-amazon.com/images/I/81-X9dGhCkL._AC_SL1500_.jpg',
+                    variant: 'PT04',
+                    main: {
+                        'https://images-na.ssl-images-amazon.com/images/I/81-X9dGhCkL._AC_SX522_.jpg': ['522', '522'],
+                        'https://images-na.ssl-images-amazon.com/images/I/81-X9dGhCkL._AC_SX569_.jpg': ['569', '569'],
+                        'https://images-na.ssl-images-amazon.com/images/I/81-X9dGhCkL._AC_SX679_.jpg': ['679', '679'],
+                        'https://images-na.ssl-images-amazon.com/images/I/81-X9dGhCkL._AC_SX342_.jpg': ['342', '342'],
+                        'https://images-na.ssl-images-amazon.com/images/I/81-X9dGhCkL._AC_SX425_.jpg': ['425', '425'],
+                        'https://images-na.ssl-images-amazon.com/images/I/81-X9dGhCkL._AC_SX466_.jpg': ['466', '466'],
+                        'https://images-na.ssl-images-amazon.com/images/I/81-X9dGhCkL._AC_SX385_.jpg': ['385', '385'],
+                    },
+                },
+                {
+                    large: 'https://images-na.ssl-images-amazon.com/images/I/21nvGq8dsRL._AC_.jpg',
+                    thumb: 'https://images-na.ssl-images-amazon.com/images/I/21nvGq8dsRL._AC_SR38,50_.jpg',
+                    hiRes: 'https://images-na.ssl-images-amazon.com/images/I/71HU1BlSy7L._AC_SL1500_.jpg',
+                    variant: 'PT05',
+                    main: {
+                        'https://images-na.ssl-images-amazon.com/images/I/71HU1BlSy7L._AC_SX466_.jpg': ['466', '466'],
+                        'https://images-na.ssl-images-amazon.com/images/I/71HU1BlSy7L._AC_SX385_.jpg': ['385', '385'],
+                        'https://images-na.ssl-images-amazon.com/images/I/71HU1BlSy7L._AC_SX342_.jpg': ['342', '342'],
+                        'https://images-na.ssl-images-amazon.com/images/I/71HU1BlSy7L._AC_SX569_.jpg': ['569', '569'],
+                        'https://images-na.ssl-images-amazon.com/images/I/71HU1BlSy7L._AC_SX425_.jpg': ['425', '425'],
+                        'https://images-na.ssl-images-amazon.com/images/I/71HU1BlSy7L._AC_SX522_.jpg': ['522', '522'],
+                        'https://images-na.ssl-images-amazon.com/images/I/71HU1BlSy7L._AC_SX679_.jpg': ['679', '679'],
+                    },
+                },
+            ],
+            title: 'Intel Core i9 1TB Silver',
+            link: 'https://www.amazon.com/dp/B081FTNGNC/?th=1&psc=1',
+            is_current_product: false,
+            price: '',
+        },
+        {
+            asin: 'B081FV1Y57',
+            images: [
+                {
+                    large: 'https://images-na.ssl-images-amazon.com/images/I/41S63IQRFXL._AC_.jpg',
+                    thumb: 'https://images-na.ssl-images-amazon.com/images/I/41S63IQRFXL._AC_SR38,50_.jpg',
+                    hiRes: 'https://images-na.ssl-images-amazon.com/images/I/71pC69I3lzL._AC_SL1500_.jpg',
+                    variant: 'MAIN',
+                    main: {
+                        'https://images-na.ssl-images-amazon.com/images/I/71pC69I3lzL._AC_SX679_.jpg': ['679', '679'],
+                        'https://images-na.ssl-images-amazon.com/images/I/71pC69I3lzL._AC_SX342_.jpg': ['342', '342'],
+                        'https://images-na.ssl-images-amazon.com/images/I/71pC69I3lzL._AC_SX425_.jpg': ['425', '425'],
+                        'https://images-na.ssl-images-amazon.com/images/I/71pC69I3lzL._AC_SX522_.jpg': ['522', '522'],
+                        'https://images-na.ssl-images-amazon.com/images/I/71pC69I3lzL._AC_SX569_.jpg': ['569', '569'],
+                        'https://images-na.ssl-images-amazon.com/images/I/71pC69I3lzL._AC_SX385_.jpg': ['385', '385'],
+                        'https://images-na.ssl-images-amazon.com/images/I/71pC69I3lzL._AC_SX466_.jpg': ['466', '466'],
+                    },
+                },
+                {
+                    large: 'https://images-na.ssl-images-amazon.com/images/I/41UD%2B0RIxmL._AC_.jpg',
+                    thumb: 'https://images-na.ssl-images-amazon.com/images/I/41UD%2B0RIxmL._AC_SR38,50_.jpg',
+                    hiRes: 'https://images-na.ssl-images-amazon.com/images/I/81aot0jAfFL._AC_SL1500_.jpg',
+                    variant: 'PT01',
+                    main: {
+                        'https://images-na.ssl-images-amazon.com/images/I/81aot0jAfFL._AC_SX385_.jpg': ['385', '385'],
+                        'https://images-na.ssl-images-amazon.com/images/I/81aot0jAfFL._AC_SX522_.jpg': ['522', '522'],
+                        'https://images-na.ssl-images-amazon.com/images/I/81aot0jAfFL._AC_SX569_.jpg': ['569', '569'],
+                        'https://images-na.ssl-images-amazon.com/images/I/81aot0jAfFL._AC_SX342_.jpg': ['342', '342'],
+                        'https://images-na.ssl-images-amazon.com/images/I/81aot0jAfFL._AC_SX679_.jpg': ['679', '679'],
+                        'https://images-na.ssl-images-amazon.com/images/I/81aot0jAfFL._AC_SX466_.jpg': ['466', '466'],
+                        'https://images-na.ssl-images-amazon.com/images/I/81aot0jAfFL._AC_SX425_.jpg': ['425', '425'],
+                    },
+                },
+                {
+                    large: 'https://images-na.ssl-images-amazon.com/images/I/51pODxHeboL._AC_.jpg',
+                    thumb: 'https://images-na.ssl-images-amazon.com/images/I/51pODxHeboL._AC_SR38,50_.jpg',
+                    hiRes: 'https://images-na.ssl-images-amazon.com/images/I/91GRfDGDJIL._AC_SL1500_.jpg',
+                    variant: 'PT02',
+                    main: {
+                        'https://images-na.ssl-images-amazon.com/images/I/91GRfDGDJIL._AC_SX522_.jpg': ['522', '522'],
+                        'https://images-na.ssl-images-amazon.com/images/I/91GRfDGDJIL._AC_SX679_.jpg': ['679', '679'],
+                        'https://images-na.ssl-images-amazon.com/images/I/91GRfDGDJIL._AC_SX466_.jpg': ['466', '466'],
+                        'https://images-na.ssl-images-amazon.com/images/I/91GRfDGDJIL._AC_SX385_.jpg': ['385', '385'],
+                        'https://images-na.ssl-images-amazon.com/images/I/91GRfDGDJIL._AC_SX569_.jpg': ['569', '569'],
+                        'https://images-na.ssl-images-amazon.com/images/I/91GRfDGDJIL._AC_SX342_.jpg': ['342', '342'],
+                        'https://images-na.ssl-images-amazon.com/images/I/91GRfDGDJIL._AC_SX425_.jpg': ['425', '425'],
+                    },
+                },
+                {
+                    large: 'https://images-na.ssl-images-amazon.com/images/I/519Lka7j2EL._AC_.jpg',
+                    thumb: 'https://images-na.ssl-images-amazon.com/images/I/519Lka7j2EL._AC_SR38,50_.jpg',
+                    hiRes: 'https://images-na.ssl-images-amazon.com/images/I/91GsCwayBPL._AC_SL1500_.jpg',
+                    variant: 'PT03',
+                    main: {
+                        'https://images-na.ssl-images-amazon.com/images/I/91GsCwayBPL._AC_SX342_.jpg': ['342', '342'],
+                        'https://images-na.ssl-images-amazon.com/images/I/91GsCwayBPL._AC_SX679_.jpg': ['679', '679'],
+                        'https://images-na.ssl-images-amazon.com/images/I/91GsCwayBPL._AC_SX522_.jpg': ['522', '522'],
+                        'https://images-na.ssl-images-amazon.com/images/I/91GsCwayBPL._AC_SX466_.jpg': ['466', '466'],
+                        'https://images-na.ssl-images-amazon.com/images/I/91GsCwayBPL._AC_SX385_.jpg': ['385', '385'],
+                        'https://images-na.ssl-images-amazon.com/images/I/91GsCwayBPL._AC_SX569_.jpg': ['569', '569'],
+                        'https://images-na.ssl-images-amazon.com/images/I/91GsCwayBPL._AC_SX425_.jpg': ['425', '425'],
+                    },
+                },
+                {
+                    large: 'https://images-na.ssl-images-amazon.com/images/I/31om7IXMIbL._AC_.jpg',
+                    thumb: 'https://images-na.ssl-images-amazon.com/images/I/31om7IXMIbL._AC_SR38,50_.jpg',
+                    hiRes: 'https://images-na.ssl-images-amazon.com/images/I/81mJ-Mdc-OL._AC_SL1500_.jpg',
+                    variant: 'PT04',
+                    main: {
+                        'https://images-na.ssl-images-amazon.com/images/I/81mJ-Mdc-OL._AC_SX425_.jpg': ['425', '425'],
+                        'https://images-na.ssl-images-amazon.com/images/I/81mJ-Mdc-OL._AC_SX679_.jpg': ['679', '679'],
+                        'https://images-na.ssl-images-amazon.com/images/I/81mJ-Mdc-OL._AC_SX522_.jpg': ['522', '522'],
+                        'https://images-na.ssl-images-amazon.com/images/I/81mJ-Mdc-OL._AC_SX342_.jpg': ['342', '342'],
+                        'https://images-na.ssl-images-amazon.com/images/I/81mJ-Mdc-OL._AC_SX466_.jpg': ['466', '466'],
+                        'https://images-na.ssl-images-amazon.com/images/I/81mJ-Mdc-OL._AC_SX569_.jpg': ['569', '569'],
+                        'https://images-na.ssl-images-amazon.com/images/I/81mJ-Mdc-OL._AC_SX385_.jpg': ['385', '385'],
+                    },
+                },
+                {
+                    large: 'https://images-na.ssl-images-amazon.com/images/I/21HDW0eoP7L._AC_.jpg',
+                    thumb: 'https://images-na.ssl-images-amazon.com/images/I/21HDW0eoP7L._AC_SR38,50_.jpg',
+                    hiRes: 'https://images-na.ssl-images-amazon.com/images/I/718Pz9bYxWL._AC_SL1500_.jpg',
+                    variant: 'PT05',
+                    main: {
+                        'https://images-na.ssl-images-amazon.com/images/I/718Pz9bYxWL._AC_SX569_.jpg': ['569', '569'],
+                        'https://images-na.ssl-images-amazon.com/images/I/718Pz9bYxWL._AC_SX385_.jpg': ['385', '385'],
+                        'https://images-na.ssl-images-amazon.com/images/I/718Pz9bYxWL._AC_SX466_.jpg': ['466', '466'],
+                        'https://images-na.ssl-images-amazon.com/images/I/718Pz9bYxWL._AC_SX425_.jpg': ['425', '425'],
+                        'https://images-na.ssl-images-amazon.com/images/I/718Pz9bYxWL._AC_SX679_.jpg': ['679', '679'],
+                        'https://images-na.ssl-images-amazon.com/images/I/718Pz9bYxWL._AC_SX342_.jpg': ['342', '342'],
+                        'https://images-na.ssl-images-amazon.com/images/I/718Pz9bYxWL._AC_SX522_.jpg': ['522', '522'],
+                    },
+                },
+            ],
+            title: 'Intel Core i9 1TB Space Gray',
+            link: 'https://www.amazon.com/dp/B081FV1Y57/?th=1&psc=1',
+            is_current_product: false,
+            price: '',
+        },
+    ],
+    asin: 'B081FZV45H',
+    url: 'https://www.amazon.com/dp/B081FZV45H',
+    reviews: { total_reviews: 1224, rating: '4.6', answered_questions: 297 },
+    price: { symbol: '$', currency: 'USD', current_price: 2149, discounted: true, before_price: 2399, savings_amount: 250, savings_percent: 10.42 },
+    bestsellers_rank: [],
+    main_image: 'https://images-na.ssl-images-amazon.com/images/I/41S63IQRFXL._AC_SY879_.jpg',
+    total_images: 6,
+    images: [
+        'https://images-na.ssl-images-amazon.com/images/I/41S63IQRFXL._AC_SY879_.jpg',
+        'https://images-na.ssl-images-amazon.com/images/I/41UD%2B0RIxmL._AC_SY879_.jpg',
+        'https://images-na.ssl-images-amazon.com/images/I/51pODxHeboL._AC_SY879_.jpg',
+        'https://images-na.ssl-images-amazon.com/images/I/519Lka7j2EL._AC_SY879_.jpg',
+        'https://images-na.ssl-images-amazon.com/images/I/31om7IXMIbL._AC_SY879_.jpg',
+        'https://images-na.ssl-images-amazon.com/images/I/21HDW0eoP7L._AC_SY879_.jpg',
+    ],
+    total_videos: 0,
+    videos: [],
+    delivery_message: 'FREE delivery: Sunday, Sep 6Details',
+    product_information: {
+        dimensions: '9.68 x 14.09 x 0.64 inches',
+        weight: '8.23 pounds',
+        available_from: 'November 13, 2019',
+        available_from_utc: '2019-11-12T23:00:00.000Z',
+        available_for_months: 10,
+        available_for_days: 291,
+        manufacturer: 'Apple Computer',
+        model_number: 'MVVJ2LL/A',
+        department: '',
+        sold_by: 'Amazon.com',
+        fulfilled_by: 'Amazon.com',
+        qty_per_order: 2,
+        store_id: '',
+        brand: 'Visit the Apple Store',
     },
-];
+    badges: { amazon_сhoice: true, amazon_prime: false },
+};
 ```
 
 ### .categories() output

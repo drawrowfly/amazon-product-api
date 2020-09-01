@@ -245,24 +245,25 @@ const amazonScraper = require('amazon-buddy');
 
 ```javascript
 [{
-    asin: 'B07MJV1K6M',
+    position: { page: 1, position: 1, global_position: 1 },
+    asin: 'B07CSLG8ST',
     price: {
         discounted: false,
-        current_price: '1.99',
+        current_price: 574,
         currency: 'USD',
         before_price: 0,
         savings_amount: 0,
         savings_percent: 0
     },
-    reviews: { total_reviews: 27, rating: 2.9 },
-    url: 'https://www.amazon.com/dp/B07MJV1K6M',
-    score: '78.30',
+    reviews: { total_reviews: 317, rating: 4.6 },
+    url: 'https://www.amazon.com/dp/B07CSLG8ST',
+    score: '1458.20',
     sponsored: false,
     amazonChoice: false,
     bestSeller: false,
     amazonPrime: false,
-    title: 'Savage Planet',
-    thumbnail: 'https://m.media-amazon.com/images/I/71VF1gJv9iL._AC_UY218_.jpg'
+    title: 'Newest Flagship Microsoft Xbox One S 1TB HDD Bundle with Two (2X) Wireless Controllers, 1-Month Game Pass Trial, 14-Day Xbox Live Gold Trial - White',
+    thumbnail: 'https://m.media-amazon.com/images/I/51-JAEI1jzL._AC_UY218_.jpg'
 },...]
 ```
 
@@ -799,8 +800,9 @@ const options = {
     // 'all' - save result to JSON and CSV files
     filetype: '',
 
-    //Set proxy: {string default: ""}
-    proxy: '',
+    // Set proxy: {string default: []}
+    // Array of proxies. If more then 1 then each http request will use randmon proxy from the array
+    proxy: ['username:password@ip:port', 'username:password@ip:port'],
 
     //Sort by rating. [minRating, maxRating]: {array default: [1,5]}
     rating: [1, 5],

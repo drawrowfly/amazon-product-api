@@ -96,7 +96,9 @@ Options:
                   blocking from the amazon side       [boolean] [default: false]
   --user-agent    Set custom user-agent                   [string] [default: ""]
   --timeout, -t   Timeout between requests. Timeout is set in mls: 1000 mls = 1
-
+  --seller        Allows to set the seller-id (A....) to limit searches to
+                  products offered by this seller and show prices of this seller
+                                                          [string] [default: ""]
 
 Examples:
   amazon-buddy products -k 'Xbox one'

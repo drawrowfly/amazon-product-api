@@ -137,6 +137,11 @@ require('yargs')
             type: 'number',
             describe: 'Timeout between requests. Timeout is set in mls: 1000 mls = 1 second',
         },
+        seller: {
+            default: '',
+            type: 'string',
+            describe: 'Allows to set the seller-id (A....) to limit searches to products offered by this seller and show prices of this seller',
+        },
     })
     .check((argv) => {
         if (['products', 'reviews', 'asin', 'categories', 'countries'].indexOf(argv['_'][0]) === -1) {

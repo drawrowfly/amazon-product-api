@@ -1,6 +1,6 @@
 {
     "name": "amazon-buddy",
-    "version": "2.2.29",
+    "version": "2.2.30",
     "description": "Amazon Scraper. You can scrape products from amazon search result and you can also scrape reviews from a specific product",
     "main": "./lib/index.js",
     "bin": {

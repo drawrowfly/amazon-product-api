@@ -841,11 +841,6 @@ const options = {
 
     //Timeout between requests. Timeout is set in mls: 1000 mls = 1 second
     timeout: 0,
-
-    //If you need to perform custom operations on the
-    //actual response body, you can pass a function,
-    //which receives the body as the argument
-    customBodyParser: (body) => {},
 };
 ```
 

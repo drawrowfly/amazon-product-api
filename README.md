@@ -15,14 +15,14 @@ Very useful tool that is able to extract almost same amount of data as the offic
 ## Features
 
 -   **Extract product data from the search result(by category, by country)**
--   **Extract lots of signle product data by using ASIN id**
+-   **Extract lots of single product data by using ASIN id**
 -   **Extract product reviews data by using ASIN id**
 -   **Extract list of categories**
 -   **Is supporting all available Amazon Marketplaces**
 -   Sort result by sponsored products only
 -   Sorts result by discounted products only
 -   Result can be saved to the JSON/CSV files
--   You can scrape up to **500 produtcs** and **1000 reviews**
+-   You can scrape up to **500 products** and **1000 reviews**
 
 **Product List**
 ![alt text](https://i.imgur.com/ES5M4Rx.png)
@@ -109,10 +109,10 @@ Examples:
 
 #### Example 1
 
-Scrape 40 producs from the amazon search result by using keyword "vacume cleaner" and save result to the CSV file
+Scrape 40 products from the amazon search result by using keyword "vacuum cleaner" and save result to the CSV file
 
 ```sh
-$ amazon-buddy products -k 'vacume cleaner' -n 40 --filetype csv
+$ amazon-buddy products -k 'vacuum cleaner' -n 40 --filetype csv
 ```
 
 **Output:
@@ -120,23 +120,23 @@ $ amazon-buddy products -k 'vacume cleaner' -n 40 --filetype csv
 
 #### Example 2
 
-Scrape 40 producs from the amazon search result by using keyword "vacume cleaner" and display raw result in the terminal
+Scrape 40 products from the amazon search result by using keyword "vacuum cleaner" and display raw result in the terminal
 
 ```sh
-$ amazon-buddy products -k 'vacume cleaner' -n 40 --filetype ''
+$ amazon-buddy products -k 'vacuum cleaner' -n 40 --filetype ''
 ```
 
 #### Example 3
 
-Scrape 40 producs from the amazon search result by using keyword "vacume cleaner" from the Amazon.NL(Netherlands) and display raw result in the terminal
+Scrape 40 products from the amazon search result by using keyword "vacuum cleaner" from the Amazon.NL(Netherlands) and display raw result in the terminal
 
 ```sh
-$ amazon-buddy products -k 'vacume cleaner' -n 40 --filetype '' --country NL
+$ amazon-buddy products -k 'vacuum cleaner' -n 40 --filetype '' --country NL
 ```
 
 #### Example 4
 
-Scrape 40 producs from the amazon search result from the category "Apps & Games" by using keyword "games" from the Amazon.ES(SPAIN) and display raw result in the terminal
+Scrape 40 products from the amazon search result from the category "Apps & Games" by using keyword "games" from the Amazon.ES(SPAIN) and display raw result in the terminal
 
 ```sh
 $ amazon-buddy products -k 'games' -n 40 --filetype '' --country ES --category mobile-apps
@@ -145,7 +145,7 @@ $ amazon-buddy products -k 'games' -n 40 --filetype '' --country ES --category m
 #### Example 5
 
 Scrape 100 reviews from a product by using ASIN.
-**_NOTE: ASIN is a uniq amazon product ID, it can be found in product URL or if you have scraped product list with our tool you will find it in the CSV/JSON files_**
+**_NOTE: ASIN is a unique amazon product ID, it can be found in product URL or if you have scraped product list with our tool you will find it in the CSV/JSON files_**
 
 ```sh
 $ amazon-buddy reviews B01GW3H3U8 -n 100
@@ -156,7 +156,7 @@ reviews(B01GW3H3U8)\_1589470878252**
 
 #### Example 6
 
-Scrape 300 producs from the "xbox one" keyword with rating minimum rating 3 and maximum rating 4 and save everything to the CSV file
+Scrape 300 products from the "Xbox one" keyword with rating minimum rating 3 and maximum rating 4 and save everything to the CSV file
 
 ```sh
 $ amazon-buddy products -k 'xbox one' -n 300 --min-rating 3 --max-rating 4
@@ -807,7 +807,7 @@ const options = {
     //Sort by rating. [minRating, maxRating]: {array default: [1,5]}
     rating: [1, 5],
 
-    //Sorting. If searching for a products then list will be sorted by a higher score(number of reviews*rating). If searching for a reviews then they will be sorted by rating.: {boolean default: false}
+    //Sorting. If searching for a product then list will be sorted by a higher score(number of reviews*rating). If searching for a reviews then they will be sorted by rating.: {boolean default: false}
     sort: false,
 
     //Scrape only products with the discount: {boolean default: false}

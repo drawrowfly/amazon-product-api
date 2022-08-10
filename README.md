@@ -70,6 +70,7 @@ Commands:
 Options:
   --help, -h      help                                                 [boolean]
   --version       Show version number                                  [boolean]
+  --path, -p      Location for saving the results        [string] [default: "."]
   --async, -a     Number of async tasks                  [string] [default: "5"]
   --keyword, -k   Amazon search keyword ex. 'Xbox one'    [string] [default: ""]
   --number, -n    Number of products to scrape. Maximum 100 products or 300
@@ -105,6 +106,7 @@ Examples:
   amazon-buddy asin B01GW3H3U8
   amazon-buddy categories
   amazon-buddy countries
+  amazon-buddy --country "DE" asin B0039N480I --path ~/results --filetype all 
 ```
 
 #### Example 1

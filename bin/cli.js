@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-
+const fs = require("fs")
 const AmazonScraper = require('../lib');
 
 const startScraper = async (argv) => {
@@ -59,6 +59,12 @@ require('yargs')
         help: {
             alias: 'h',
             describe: 'help',
+        },
+        path: {
+            alias: 'p',
+            default: '.',
+            type: 'string',
+            describe: 'Location for saving the results',
         },
         async: {
             alias: 'a',
@@ -161,6 +167,14 @@ require('yargs')
             } else {
                 argv.asin = argv.id;
             }
+        }
+
+        // checking the path
+        if (argv.path){
+            const pathToDir = argv.path
+
+            // check if the path is valid to write
+            fs.accessSync(pathToDir, fs.constants.W_OK);
         }
 
         // Minimum allowed rating is 1

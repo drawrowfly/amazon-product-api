@@ -3,6 +3,7 @@
     "version": "2.2.43",
     "description": "Amazon Scraper. You can scrape products from amazon search result and you can also scrape reviews from a specific product",
     "main": "./lib/index.js",
+    "types": "./types.d.ts",
     "bin": {
         "amazon-buddy": "bin/cli.js"
     },

@@ -1,0 +1,32 @@
+name: Deploy lambda
+on:
+    push:
+        branches:
+            - 'main'
+jobs:
+    deploy_source:
+        name: build and deploy lambda
+        strategy:
+            matrix:
+                python-version: [3.10]
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v1
+            - name: Use Python ${{ matrix.python-version }}
+              uses: actions/setup-python@v4
+              with:
+                  python-version: '3.10'
+            - name: install deps
+              run: |
+                  npm i
+            - name: zip
+              run: |
+                  zip -r ./function.zip .
+            - name: default deploy
+              uses: appleboy/lambda-action@master
+              with:
+                  aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+                  aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+                  aws_region: us-east-1
+                  function_name: scrapper-amazon
+                  zip_file: function.zip

@@ -80,8 +80,8 @@ require('yargs')
         },
         filetype: {
             default: 'csv',
-            choices: ['csv', 'json', 'all', ''],
-            describe: "Type of the output file where the data will be saved. 'all' - save data to the 'json' and 'csv' files",
+            choices: ['csv', 'json', 'all', 'stdout', ''],
+            describe: "Type of the output file where the data will be saved. 'stdout' - print json to stdout. 'all' - save data to the 'json' and 'csv' files",
         },
         sort: {
             default: false,

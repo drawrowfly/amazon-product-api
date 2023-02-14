@@ -913,6 +913,11 @@ const options = {
         currency: 'EUR',
         host: 'www.amazon.es',
     },
+    EG: {
+        country: 'Egypt',
+        currency: 'EGP',
+        host: 'www.amazon.eg',
+    },
     TR: {
         country: 'Turkey',
         currency: 'TRY',

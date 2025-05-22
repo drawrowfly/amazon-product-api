@@ -1,10 +1,10 @@
-# Amazon Product Api (Unofficial)
+# API de Produtos da Amazon (Não Oficial)
 
 ![NPM](https://img.shields.io/npm/l/amazon-buddy.svg?style=for-the-badge) ![npm](https://img.shields.io/npm/v/amazon-buddy.svg?style=for-the-badge)
 
-Very useful tool that is able to extract almost same amount of data as the official Amazon Product API
+Ferramenta muito útil capaz de extrair quase a mesma quantidade de dados que a API oficial de Produtos da Amazon.
 
-## If you like this tool then please Star it
+## Se você gosta desta ferramenta, por favor, marque-a com uma estrela
 
 ---
 
@@ -12,93 +12,93 @@ Very useful tool that is able to extract almost same amount of data as the offic
 
 ---
 
-## Features
+## Funcionalidades
 
--   **Extract product data from the search result(by category, by country)**
--   **Extract lots of single product data by using ASIN id**
--   **Extract product reviews data by using ASIN id**
--   **Extract list of categories**
--   **Is supporting all available Amazon Marketplaces**
--   Sort result by sponsored products only
--   Sorts result by discounted products only
--   Result can be saved to the JSON/CSV files
--   You can scrape up to **500 products** and **1000 reviews**
+-   **Extrair dados de produtos dos resultados de pesquisa (por categoria, por país)**
+-   **Extrair muitos dados de um único produto usando o ID ASIN**
+-   **Extrair dados de avaliações de produtos usando o ID ASIN**
+-   **Extrair lista de categorias**
+-   **Suporta todos os Marketplaces da Amazon disponíveis**
+-   Ordenar resultados apenas por produtos patrocinados
+-   Ordenar resultados apenas por produtos com desconto
+-   Os resultados podem ser salvos em arquivos JSON/CSV
+-   Você pode extrair até **500 produtos** e **1000 avaliações**
 
-**Product List**
+**Lista de Produtos**
 ![alt text](https://i.imgur.com/ES5M4Rx.png)
-**Review List**
+**Lista de Avaliações**
 ![alt text](https://i.imgur.com/HuBW3rl.png)
 
-**Note:**
+**Nota:**
 
--   Empty parameter = empty value
+-   Parâmetro vazio = valor vazio
 
-**Possible errors**
+**Erros Possíveis**
 
--   If there will be let me know
+-   Se encontrar algum, me avise.
 
-## Installation
+## Instalação
 
-**Install from NPM**
+**Instalar via NPM**
 
 ```sh
 $ npm i -g amazon-buddy
 ```
 
-**Install from YARN**
+**Instalar via YARN**
 
 ```sh
 $ yarn global add amazon-buddy
 ```
 
-## USAGE
+## USO
 
 **Terminal**
 
 ```sh
 $ amazon-buddy --help
 
-Usage: amazon-buddy <command> [options]
+Uso: amazon-buddy <comando> [opções]
 
-Commands:
-  amazon-buddy products      collect products by using keyword
-  amazon-buddy reviews [id]  collect reviews from product by using ASIN id
-  amazon-buddy asin [id]     single product details
-  amazon-buddy categories    get list of categories
-  amazon-buddy countries     get list of countries
+Comandos:
+  amazon-buddy products      coletar produtos usando palavra-chave
+  amazon-buddy reviews [id]  coletar avaliações de produtos usando ID ASIN
+  amazon-buddy asin [id]     detalhes de um único produto
+  amazon-buddy categories    obter lista de categorias
+  amazon-buddy countries     obter lista de países
 
-Options:
-  --help, -h      help                                                 [boolean]
-  --version       Show version number                                  [boolean]
-  --async, -a     Number of async tasks                  [string] [default: "5"]
-  --keyword, -k   Amazon search keyword ex. 'Xbox one'    [string] [default: ""]
-  --number, -n    Number of products to scrape. Maximum 100 products or 300
-                  reviews                                 [number] [default: 20]
-  --filetype      Type of the output file where the data will be saved. 'all' -
-                  save data to the 'json' and 'csv' files
-                            [choices: "csv", "json", "all", ""] [default: "csv"]
-  --sort          If searching for the products then the list will be sorted by
-                  the higher score(number of reviews*rating). If searching for
-                  the reviews then they will be sorted by the rating.
-                                                      [boolean] [default: false]
-  --discount, -d  Scrape only products with the discount
-                                                      [boolean] [default: false]
-  --sponsored     Scrape only sponsored products      [boolean] [default: false]
-  --min-rating    Minimum allowed rating                   [number] [default: 1]
-  --max-rating    Maximum allowed rating                   [number] [default: 5]
-  --country       In ISO 3166 (Alpha-2 code) format. To get available list of
-                  countries type and use (index) from the shown table as value:
-                  amazon-buddy countries                [string] [default: "US"]
-  --category      To get available list of categories type and use (index) from
-                  the shown table as value: amazon-buddy categories
-                                                       [string] [default: "aps"]
-  --random-ua     Randomize user agent version. This helps to prevent request
-                  blocking from the amazon side       [boolean] [default: false]
-  --user-agent    Set custom user-agent                   [string] [default: ""]
-  --timeout, -t   Timeout between requests. Timeout is set in mls: 1000 mls = 1
+Opções:
+  --help, -h      ajuda                                                [booleano]
+  --version       Mostrar número da versão                             [booleano]
+  --async, -a     Número de tarefas assíncronas          [string] [padrão: "5"]
+  --keyword, -k   Palavra-chave de pesquisa da Amazon ex. 'Xbox one' [string] [padrão: ""]
+  --number, -n    Número de produtos para extrair. Máximo de 100 produtos ou 300
+                  avaliações                                [número] [padrão: 20]
+  --filetype      Tipo do arquivo de saída onde os dados serão salvos. 'all' -
+                  salvar dados nos arquivos 'json' e 'csv'
+                            [escolhas: "csv", "json", "all", ""] [padrão: "csv"]
+  --sort          Se estiver pesquisando produtos, a lista será ordenada pela
+                  pontuação mais alta (número de avaliações * classificação). Se estiver pesquisando
+                  avaliações, elas serão ordenadas pela classificação.
+                                                      [booleano] [padrão: false]
+  --discount, -d  Extrair apenas produtos com desconto
+                                                      [booleano] [padrão: false]
+  --sponsored     Extrair apenas produtos patrocinados      [booleano] [padrão: false]
+  --min-rating    Classificação mínima permitida                   [número] [padrão: 1]
+  --max-rating    Classificação máxima permitida                   [número] [padrão: 5]
+  --country       No formato ISO 3166 (código Alpha-2). Para obter a lista de países
+                  disponíveis, digite e use (índice) da tabela mostrada como valor:
+                  amazon-buddy countries                [string] [padrão: "US"]
+  --category      Para obter a lista de categorias disponíveis, digite e use (índice) da
+                  tabela mostrada como valor: amazon-buddy categories
+                                                       [string] [padrão: "aps"]
+  --random-ua     Randomizar versão do user agent. Isso ajuda a prevenir o bloqueio
+                  de requisições pelo lado da Amazon       [booleano] [padrão: false]
+  --user-agent    Definir user-agent personalizado                   [string] [padrão: ""]
+  --timeout, -t   Tempo limite entre requisições. O tempo limite é definido em ms: 1000 ms = 1
 
 
-Examples:
+Exemplos:
   amazon-buddy products -k 'Xbox one'
   amazon-buddy products -k 'Xbox one' --country 'GB'
   amazon-buddy reviews B01GW3H3U8
@@ -107,133 +107,133 @@ Examples:
   amazon-buddy countries
 ```
 
-#### Example 1
+#### Exemplo 1
 
-Scrape 40 products from the amazon search result by using keyword "vacuum cleaner" and save result to the CSV file
+Extrair 40 produtos do resultado de pesquisa da Amazon usando a palavra-chave "vacuum cleaner" e salvar o resultado no arquivo CSV
 
 ```sh
 $ amazon-buddy products -k 'vacuum cleaner' -n 40 --filetype csv
 ```
 
-**Output:
+**Saída:
 1552945544582_products.csv**
 
-#### Example 2
+#### Exemplo 2
 
-Scrape 40 products from the amazon search result by using keyword "vacuum cleaner" and display raw result in the terminal
+Extrair 40 produtos do resultado de pesquisa da Amazon usando a palavra-chave "vacuum cleaner" e exibir o resultado bruto no terminal
 
 ```sh
 $ amazon-buddy products -k 'vacuum cleaner' -n 40 --filetype ''
 ```
 
-#### Example 3
+#### Exemplo 3
 
-Scrape 40 products from the amazon search result by using keyword "vacuum cleaner" from the Amazon.NL(Netherlands) and display raw result in the terminal
+Extrair 40 produtos do resultado de pesquisa da Amazon usando a palavra-chave "vacuum cleaner" da Amazon.NL (Holanda) e exibir o resultado bruto no terminal
 
 ```sh
 $ amazon-buddy products -k 'vacuum cleaner' -n 40 --filetype '' --country NL
 ```
 
-#### Example 4
+#### Exemplo 4
 
-Scrape 40 products from the amazon search result from the category "Apps & Games" by using keyword "games" from the Amazon.ES(SPAIN) and display raw result in the terminal
+Extrair 40 produtos do resultado de pesquisa da Amazon da categoria "Apps & Games" usando a palavra-chave "games" da Amazon.ES (ESPANHA) e exibir o resultado bruto no terminal
 
 ```sh
 $ amazon-buddy products -k 'games' -n 40 --filetype '' --country ES --category mobile-apps
 ```
 
-#### Example 5
+#### Exemplo 5
 
-Scrape 100 reviews from a product by using ASIN.
-**_NOTE: ASIN is a unique amazon product ID, it can be found in product URL or if you have scraped product list with our tool you will find it in the CSV/JSON files_**
+Extrair 100 avaliações de um produto usando ASIN.
+**_NOTA: ASIN é um ID de produto exclusivo da Amazon, pode ser encontrado na URL do produto ou se você extraiu a lista de produtos com nossa ferramenta, você o encontrará nos arquivos CSV/JSON_**
 
 ```sh
 $ amazon-buddy reviews B01GW3H3U8 -n 100
 ```
 
-**Output:
+**Saída:
 reviews(B01GW3H3U8)\_1589470878252**
 
-#### Example 6
+#### Exemplo 6
 
-Scrape 300 products from the "Xbox one" keyword with rating minimum rating 3 and maximum rating 4 and save everything to the CSV file
+Extrair 300 produtos da palavra-chave "Xbox one" com classificação mínima de 3 e máxima de 4 e salvar tudo no arquivo CSV
 
 ```sh
 $ amazon-buddy products -k 'xbox one' -n 300 --min-rating 3 --max-rating 4
 ```
 
-**Output:
+**Saída:
 1552945544582_products.csv**
 
-#### Example 7
+#### Exemplo 7
 
-Show list of all available countries
+Mostrar lista de todos os países disponíveis
 
 ```sh
 $ amazon-buddy countries
 ```
 
-**Output:**
+**Saída:**
 ![alt text](https://i.imgur.com/SyPRHcN.png)
 
-#### Example 7
+#### Exemplo 8
 
-Show list of all available categories from the Amazon.CO.UK
+Mostrar lista de todas as categorias disponíveis da Amazon.CO.UK
 
 ```sh
 $ amazon-buddy categories --country GB
 ```
 
-**Output:**
+**Saída:**
 ![alt text](https://i.imgur.com/k4MBg2h.png)
 
-## Module
+## Módulo
 
-### Methods
+### Métodos
 
 ```javascript
-.products() - product search
-.reviews() - reviews search
-.asin() - single product details
-.categories() - available categories
+.products() - pesquisa de produtos
+.reviews() - pesquisa de avaliações
+.asin() - detalhes de um único produto
+.categories() - categorias disponíveis
 ```
 
-### Example
+### Exemplo
 
 ```javascript
 const amazonScraper = require('amazon-buddy');
 
 (async () => {
     try {
-        // Collect 50 products from a keyword 'xbox one'
-        // Default country is US
+        // Coletar 50 produtos de uma palavra-chave 'xbox one'
+        // O país padrão é US
         const products = await amazonScraper.products({ keyword: 'Xbox One', number: 50 });
 
-        // Collect 50 products from a keyword 'xbox one' from Amazon.NL
+        // Coletar 50 produtos de uma palavra-chave 'xbox one' da Amazon.NL
         const products = await amazonScraper.products({ keyword: 'Xbox One', number: 50, country: 'NL' });
 
-        // Collect 50 products from a keyword 'xbox one' from Amazon.CO.UK
+        // Coletar 50 produtos de uma palavra-chave 'xbox one' da Amazon.CO.UK
         const products = await amazonScraper.products({ keyword: 'Xbox One', number: 50, country: 'GB' });
 
-        // Collect products that are located on page number 2
+        // Coletar produtos que estão localizados na página número 2
         const reviews = await amazonScraper.products({ keyword: 'Xbox One', bulk: false, page: 2 });
 
-        // Collect 50 products from a keyword 'xbox one' with rating between 3-5 stars
+        // Coletar 50 produtos de uma palavra-chave 'xbox one' com classificação entre 3-5 estrelas
         const products_rank = await amazonScraper.products({ keyword: 'Xbox One', number: 50, rating: [3, 5] });
 
-        // Collect 50 reviews from a product ID B01GW3H3U8
+        // Coletar 50 avaliações de um ID de produto B01GW3H3U8
         const reviews = await amazonScraper.reviews({ asin: 'B01GW3H3U8', number: 50 });
 
-        // Collect 50 reviews from a product ID B01GW3H3U8  with rating between 1-2 stars
+        // Coletar 50 avaliações de um ID de produto B01GW3H3U8 com classificação entre 1-2 estrelas
         const reviews_rank = await amazonScraper.reviews({ asin: 'B01GW3H3U8', number: 50, rating: [1, 2] });
 
-        // Get single product details by using ASIN id
+        // Obter detalhes de um único produto usando o ID ASIN
         const product_by_asin = await amazonScraper.asin({ asin: 'B01GW3H3U8' });
 
-        // Get categories from amazon.COM.AU
+        // Obter categorias da amazon.COM.AU
         const categories_AU = await amazonScraper.categories({ country: 'AU' });
 
-        // Get categories from amazon.CN
+        // Obter categorias da amazon.CN
         const categories_CN = await amazonScraper.categories({ country: 'CN' });
     } catch (error) {
         console.log(error);
@@ -241,7 +241,7 @@ const amazonScraper = require('amazon-buddy');
 })();
 ```
 
-### .products() output
+### Saída de .products()
 
 ```javascript
 [{
@@ -267,7 +267,7 @@ const amazonScraper = require('amazon-buddy');
 },...]
 ```
 
-### .reviews() output
+### Saída de .reviews()
 
 ```javascript
 [{
@@ -288,7 +288,7 @@ const amazonScraper = require('amazon-buddy');
 },...]
 ```
 
-### .asin() output
+### Saída de .asin()
 
 ```javascript
 {
@@ -742,7 +742,7 @@ const amazonScraper = require('amazon-buddy');
 };
 ```
 
-### .categories() output
+### Saída de .categories()
 
 ```javascript
 {
@@ -777,94 +777,94 @@ const amazonScraper = require('amazon-buddy');
 }
 ```
 
-### Options
+### Opções
 
 ```javascript
 const options = {
-    //Search keyword: {string default: ""}
+    //Palavra-chave de pesquisa: {string padrão: ""}
     keyword: '',
 
-    //Number of products to scrape: {int default: 10}
+    //Número de produtos para extrair: {int padrão: 10}
     number: 10,
 
-    // If {bulk} is set to {false} then you can only scrape products by page. Note that {number} will be ignored
-    // Very usefull if you need to scrape products from a specific page
+    // Se {bulk} for definido como {false}, você só poderá extrair produtos por página. Note que {number} será ignorado
+    // Muito útil se você precisar extrair produtos de uma página específica
     bulk: true,
 
-    // Search result {page} number
-    // You can set this value to 5 and scraper will collect all products starting from the {page} number 5
+    // Número da {page} do resultado da pesquisa
+    // Você pode definir este valor para 5 e o scraper coletará todos os produtos a partir da {page} número 5
     page: 0,
 
-    // Save result to a file: {boolean default: ''}
-    // You can set ['json', 'csv', 'all', '']
-    // 'all' - save result to JSON and CSV files
+    // Salvar resultado em um arquivo: {boolean padrão: ''}
+    // Você pode definir ['json', 'csv', 'all', '']
+    // 'all' - salvar resultado em arquivos JSON e CSV
     filetype: '',
 
-    // Set proxy: {string default: []}
-    // Array of proxies. If more then 1 then each http request will use randmon proxy from the array
+    // Definir proxy: {string padrão: []}
+    // Array de proxies. Se mais de 1, cada requisição http usará um proxy aleatório do array
     proxy: ['username:password@ip:port', 'username:password@ip:port'],
 
-    //Sort by rating. [minRating, maxRating]: {array default: [1,5]}
+    //Ordenar por classificação. [minRating, maxRating]: {array padrão: [1,5]}
     rating: [1, 5],
 
-    //Sorting. If searching for a product then list will be sorted by a higher score(number of reviews*rating). If searching for a reviews then they will be sorted by rating.: {boolean default: false}
+    //Ordenação. Se estiver pesquisando um produto, a lista será ordenada por uma pontuação mais alta (número de avaliações*classificação). Se estiver pesquisando avaliações, elas serão ordenadas pela classificação.: {boolean padrão: false}
     sort: false,
 
-    //Scrape only products with the discount: {boolean default: false}
+    //Extrair apenas produtos com desconto: {boolean padrão: false}
     discount: false,
 
-    //Scrape only sponsored products: {boolean default: false}
+    //Extrair apenas produtos patrocinados: {boolean padrão: false}
     sponsored: false,
 
-    //Amazon is supported in 16 countries
-    //List of all countries is posted below
-    //Value should be in ISO 3166 (Alpha-2 code) format
-    //{string default: "US"}
+    //A Amazon é suportada em 16 países
+    //A lista de todos os países está publicada abaixo
+    //O valor deve estar no formato ISO 3166 (código Alpha-2)
+    //{string padrão: "US"}
     country: 'GB',
 
-    // Number of async task {number default: 5}
-    // The more the faster but do not go wild as usually 5 is enough
+    // Número de tarefas assíncronas {number padrão: 5}
+    // Quanto mais, mais rápido, mas não exagere, pois geralmente 5 é suficiente
     asyncTasks: 5,
 
-    //Product search can be performed in the specific category
-    //To get list of categories you can use method .categories()
+    //A pesquisa de produtos pode ser realizada na categoria específica
+    //Para obter a lista de categorias, você pode usar o método .categories()
     category: 'digital-text',
 
-    //Some product metadata is binded to the ZIP code
-    //When you are setting the ZIP code new session is being generated by the Amazon
-    //By setting cookie values you will receive more accurate data(pricing and etc)
-    //Cookie example that can be extracted from the browser :session-id=222-22222-22222; session-id-time=222221l; ubid-main=444-4444-4444444
+    //Alguns metadados do produto estão vinculados ao CEP
+    //Quando você define o CEP, uma nova sessão é gerada pela Amazon
+    //Ao definir os valores dos cookies, você receberá dados mais precisos (preços, etc.)
+    //Exemplo de cookie que pode ser extraído do navegador: session-id=222-22222-22222; session-id-time=222221l; ubid-main=444-4444-4444444
     cookie: '',
 
-    //Randomize user agent version. This helps to prevent request blocking from the amazon side
+    //Randomizar versão do user agent. Isso ajuda a prevenir o bloqueio de requisições pelo lado da Amazon
     randomUa: false,
 
-    //Timeout between requests. Timeout is set in mls: 1000 mls = 1 second
+    //Tempo limite entre requisições. O tempo limite é definido em ms: 1000 ms = 1 segundo
     timeout: 0,
 };
 ```
 
-### List of supported countries
+### Lista de países suportados
 
 ```javascript
 {
     US: {
-        country: 'United States of America',
+        country: 'Estados Unidos da América',
         currency: 'USD',
         host: 'www.amazon.com',
     },
     AU: {
-        country: 'Australia',
+        country: 'Austrália',
         currency: 'AUD',
         host: 'www.amazon.com.au',
     },
     BR: {
-        country: 'Brazil',
+        country: 'Brasil',
         currency: 'BRL',
         host: 'www.amazon.com.br',
     },
     CA: {
-        country: 'Canada',
+        country: 'Canadá',
         currency: 'CAD',
         host: 'www.amazon.ca',
     },
@@ -874,62 +874,62 @@ const options = {
         host: 'www.amazon.cn',
     },
     FR: {
-        country: 'France',
+        country: 'França',
         currency: 'EUR',
         host: 'www.amazon.fr',
     },
     DE: {
-        country: 'Germany',
+        country: 'Alemanha',
         currency: 'EUR',
         host: 'www.amazon.de',
     },
     IN: {
-        country: 'India',
+        country: 'Índia',
         currency: 'INR',
         host: 'www.amazon.in',
     },
     IT: {
-        country: 'Italy',
+        country: 'Itália',
         currency: 'EUR',
         host: 'www.amazon.it',
     },
     MX: {
-        country: 'Mexico',
+        country: 'México',
         currency: 'MXN',
         host: 'www.amazon.com.mx',
     },
     NL: {
-        country: 'Netherlands',
+        country: 'Holanda',
         currency: 'EUR',
         host: 'www.amazon.nl',
     },
     SG: {
-        country: 'Singapore',
+        country: 'Singapura',
         currency: 'SGD',
         host: 'www.amazon.sg',
     },
     ES: {
-        country: 'Spain',
+        country: 'Espanha',
         currency: 'EUR',
         host: 'www.amazon.es',
     },
     TR: {
-        country: 'Turkey',
+        country: 'Turquia',
         currency: 'TRY',
         host: 'www.amazon.com.tr',
     },
     AE: {
-        country: 'United Arab Emirates',
+        country: 'Emirados Árabes Unidos',
         currency: 'AED',
         host: 'www.amazon.ae',
     },
     GB: {
-        country: 'United Kingdom',
+        country: 'Reino Unido',
         currency: 'GBP',
         host: 'www.amazon.co.uk',
     },
     JP: {
-        country: 'Japan',
+        country: 'Japão',
         currency: 'JPY',
         host: 'www.amazon.jp',
     },
@@ -938,8 +938,8 @@ const options = {
 
 ---
 
-## License
+## Licença
 
 **MIT**
 
-**Free Software**
+**Software Livre**

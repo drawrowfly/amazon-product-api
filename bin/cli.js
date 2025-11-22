@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+const fs = require("fs"); // To allow saving outside of current directory
+
 const AmazonScraper = require('../lib');
 
 const startScraper = async (argv) => {
@@ -60,6 +62,12 @@ require('yargs')
             alias: 'h',
             describe: 'help',
         },
+        path: {
+            alias: 'p',
+            default: '.',
+            type: 'string',
+            describe: 'Location for saving the results',
+        },
         async: {
             alias: 'a',
             default: '5',
@@ -80,7 +88,7 @@ require('yargs')
         },
         filetype: {
             default: 'csv',
-            choices: ['csv', 'json', 'all', ''],
+            choices: ['csv', 'json', 'all', '', 'html'],
             describe: "Type of the output file where the data will be saved. 'all' - save data to the 'json' and 'csv' files",
         },
         sort: {
@@ -161,6 +169,14 @@ require('yargs')
             } else {
                 argv.asin = argv.id;
             }
+        }
+
+        // checking the path
+        if (argv.path){
+            const pathToDir = argv.path
+
+            // check if the path is valid to write
+            fs.accessSync(pathToDir, fs.constants.W_OK);
         }
 
         // Minimum allowed rating is 1
